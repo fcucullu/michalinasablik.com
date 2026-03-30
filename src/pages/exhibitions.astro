@@ -38,12 +38,17 @@ const exhibitions = [
   <div class="container page-content">
     <h1>Exhibitions</h1>
     <div class="exhibition-list" style="margin-top: 2rem;">
-      {exhibitions.map((ex) => (
-        <div class="exhibition-item">
-          <span class="exhibition-year">{ex.year}</span>
-          <div>
-            <span class="exhibition-title">{ex.title}</span>
-            <span class="exhibition-venue"> — {ex.venue}</span>
+      {exhibitions.map((ex, i) => (
+        <div class="exhibition-entry" style="margin-bottom: 2.5rem;">
+          <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
+            style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
+            onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
+          <div class="exhibition-item">
+            <span class="exhibition-year">{ex.year}</span>
+            <div>
+              <span class="exhibition-title">{ex.title}</span>
+              <span class="exhibition-venue"> — {ex.venue}</span>
+            </div>
           </div>
         </div>
       ))}
