@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+
+const exhibitions = [
+  { title: "Exhibition by Gvantsa Jishkariani", venue: "Espai Souvenir, Barcelona", year: "2026" },
+  { title: "to undo, to crumble, to vanish", venue: "National Museum of Kosovo", year: "2026" },
+  { title: "Other Tomorrows / City of Women", venue: "Museum of Modern Art in Warsaw", year: "2025–2026" },
+  { title: "A View of One's Own by Paulina Stasik", venue: "BWA Tarnów", year: "2025" },
+  { title: "Slime by Joanna Fluder", venue: "Zachęta National Gallery, Warsaw", year: "2025" },
+  { title: "Soft Smiths. Contemporary Women's* Metalwork", venue: "Center of Polish Sculpture, Orońsko", year: "2025" },
+  { title: "Hyperlocality. Personal Cartographies", venue: "CasCaDas ArtSpace, Barcelona", year: "2025" },
+  { title: "Mammals&Suckers", venue: "HOS Gallery, Warsaw", year: "2025" },
+  { title: "Fragile Dreams", venue: "Bunkier Sztuki, Kraków", year: "2025" },
+  { title: "A Man Eating His Own Tail", venue: "CasCaDas ArtSpace, Barcelona", year: "2024" },
+  { title: "We Are a Dream", venue: "Kunsthale.Ost, Leipzig", year: "2024" },
+  { title: "From The Ashes", venue: "Zachęta National Gallery, Warsaw", year: "2024" },
+  { title: "Apparently Small Significance of Puddles", venue: "Art Walk Gallery", year: "2023" },
+  { title: "Hit Me With Your Car", venue: "Galeria Promocyjna", year: "2023" },
+  { title: "I Stand in Front of the Mirror Like Dog and Paint", venue: "HOS Gallery", year: "2023" },
+  { title: "Skin Deep", venue: "KRAKERS", year: "2023" },
+  { title: "And Rivers Will Flow with Date Syrup", venue: "Galeria Promocyjna", year: "2023" },
+  { title: "Quench Thirst with Dew", venue: "UFO Art Gallery", year: "2023" },
+  { title: "Cool Lips of Waves", venue: "Gdańska Galeria Miejska", year: "2022" },
+  { title: "Room of Projected Horizons", venue: "Galeria Promocyjna", year: "2022" },
+  { title: "In these days of tumult, heat and dazzle…", venue: "Stefan Gierowski's Foundation", year: "2021" },
+  { title: "Pure Crystal", venue: "Galeria Promocyjna", year: "2021" },
+  { title: "Warsaw Preview", venue: "Jazdów", year: "2021" },
+  { title: "Year on the Protests", venue: "Krakow Photomonth", year: "2021" },
+  { title: "A Dream Within a Dream", venue: "Magic Garden", year: "2020" },
+  { title: "Beautiful Losers", venue: "Jak zapomnieć", year: "2020" },
+  { title: "Poland of Our Dreams", venue: "Warsaw", year: "2019" },
+  { title: "Snake-Man", venue: "Jak zapomnieć", year: "2019" },
+  { title: "Apetite", venue: "Warsaw", year: "2018" },
+  { title: "#behappyalways", venue: "Warsaw", year: "2018" },
+];
+---
+<Base title="Exhibitions — Michalina Sablik">
+  <div class="container page-content">
+    <h1>Exhibitions</h1>
+    <div class="exhibition-list" style="margin-top: 2rem;">
+      {exhibitions.map((ex) => (
+        <div class="exhibition-item">
+          <span class="exhibition-year">{ex.year}</span>
+          <div>
+            <span class="exhibition-title">{ex.title}</span>
+            <span class="exhibition-venue"> — {ex.venue}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Base>
