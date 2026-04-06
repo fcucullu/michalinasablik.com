@@ -2,52 +2,50 @@
 import Base from '../layouts/Base.astro';
 
 const news = [
-  { title: "Book launch of Liliana Zeic's monograph in Warsaw", text: "March 24, 6:00 PM — Museum of Modern Art, Warsaw. First comprehensive publication examining Zeic's work, combining critical essays with visual material, exploring gender identity, sexuality, and nature studies." },
-  { title: "Exhibition at the National Gallery of Kosovo", text: "Laureta Hajrullahu's first solo exhibition exploring identity and digital spaces, featuring games, algorithms, internet culture, and immersive video works." },
-  { title: "Artysta Zawodowiec: The ING Polish Art Foundation", text: "March 19 — Lecturer and portfolio consultant. First steps in international art careers, grants, exchange programs, practical advice from curatorial experience." },
-  { title: "Cura: lecture at the Grid in Gdańsk", text: "February 12, 2026, 6 PM — Artistic debut as biographical moment and institutional construct; eight years working with emerging artists." },
-  { title: "Upcoming art events and festivals in 2026", text: "Published in Moodaily. Research on international art events worth marking in 2026 calendar." },
-  { title: "New book by Anna Raczyńska", text: "\"Old Habits, New Beginnings\" — 200+ page dual-language Polish-German catalogue featuring essays by Sablik and others. Promotional event at KVOST Berlin in January 2025." },
-  { title: "The City of Women Exhibition", text: "Museum of Modern Art — Four-part feminist art exhibition; Sablik curates \"Other Tomorrows\" section with Vera Zalutskaya." },
-  { title: "Self-Portrait with Tongue Out: book by Paulina Stasik", text: "Published by BWA Tarnów. Designer: Agata Biskup. Artist's works from five years with commentaries and critical essays by Sablik and Natalia Gierowska." },
-  { title: "New exhibition by Paulina Stasik", text: "October 19 onwards — Biuro Wystaw Artystycznych, Tarnów. Paintings and pastels; accompanying book launch." },
-  { title: "Curated Walks in Barcelona", text: "Three relaxed art walks through city galleries and institutions. For beginners and art enthusiasts; includes casual discussion afterward." },
-  { title: "Catalogue for \"Swarożyce. Contemporary Woman's* Metalwork\"", text: "Design: Karolina Pietrzyk and Tobi Wenig. Curatorial text, essays on women's metalwork history, fiction piece." },
-  { title: "Interview for MiejMiejsce.pl", text: "Topic: Relational curation, collectivity, activism, identity politics and alternatives. Interviewer: Gabi Skrzypczak." },
-  { title: "Slime. Joanna Fluder Exhibition", text: "July 24 – October 19, 2025 — Zachęta, Warsaw. 140 gouaches and premiere installations exploring motherhood, neurodivergence, care, and nature." },
-  { title: "Soft Smiths. Contemporary women's* metalwork", text: "July 5 – August 24, 2025 — Centre of Polish Sculpture, Orońsko. 11 international artists working with metal." },
-  { title: "Collaboration with AWARE", text: "Biogram of Urszula Broll for Archives of Women Artists. Key figure in Katowice underground scene." },
-  { title: "Identity Crisis Network Conference", text: "May 23–24, 2025 — Museum of Modern Art, Zagreb. 20 scholars, curators, artists invited to challenge notions of identity and subjectivity." },
-  { title: "Group exhibition: Hyperlocality: Personal Cartographies", text: "May 15 opening — CasCaDas ArtSpace, Barcelona. Personal maps and geographies of Barcelona-based international artists." },
-  { title: "Mammals and Suckers Exhibition", text: "April 4 – May 31, 2025 — Galeria HOS, Warsaw. Ida Karkoszka and Karolina Wysocka exploring socio-ecological issues." },
-  { title: "Justyna Smoleń's catalog", text: "Catalog for \"Fragile Dreams\" exhibition. Texts by Olga Drenda, Ewa Borysewicz, and interview by Sablik. Book launch April 1 at Bunkier Sztuki Gallery, Kraków." },
-  { title: "Exhibition Open Call: Hyperlocality", text: "CasCaDas ArtSpace, Barcelona. Deadline: March 21, 2025. Micro-histories, community engagement, locality and globality intersection." },
-  { title: "Text for Edyta Hul's catalog", text: "\"The Wild, the Dirty, and the Repressed\" — Exhibition: \"Something's in the Water\" at Galeria Bielska BWA, Bielsko-Biała." },
-  { title: "International Conference Open Call – Zagreb", text: "Museum of Contemporary Art, Zagreb. May 23–24, 2025. Deadline: February 28, 2025. Identity and subjectivity in contemporary art." },
-  { title: "New exhibition in Krakow – Justyna Smoleń", text: "Opening January 29 — Bunkier Sztuki, Kraków. \"Fragile Dreams\" featuring objects, installations, collage and ceramics." },
-  { title: "Interview for Culture.pl about Identity Crisis Network", text: "Topic: Identity politics, institutional problems, curation, imagination crisis. With Vera Zalutskaya. Interviewer: Piotr Policht." },
-  { title: "Notes on 15. Manifesta Biennale", text: "Published in Moodaily. Barcelona Metropolitana — Analysis of four amazing locations and dialogues with spaces." },
-  { title: "Identity Crisis Network", text: "Collective: Vera Zalutskaya, Luka Cvetkovic, Luja Šimunović, Klara Petrović. New artistic practices in Eastern Europe responding to identity politics crisis. Events: Online seminars, study visits, Zagreb conference 2025." },
-  { title: "A Man Eating His Own Tail: exhibition by Przemek Branas", text: "September 26 – November 2, 2024 — CasCaDas ArtSpace, Barcelona. Ouroboros mythology and eternal return symbolism." },
-  { title: "Lecture for Culture Makes: Decolonialism in art institutions", text: "Decolonial practices, marginal voices, gallery and museum critique. Reference: Venice Art Biennale theme \"Foreigners are everywhere.\"" },
-  { title: "We Are a Dream: exhibition in Leipzig", text: "Early September — Kunsthalle.Ost, Leipzig. Artist: Aleksandra Liput. Based on Ursula Le Guin's \"The Lathe of Heaven.\"" },
-  { title: "Smelling Art. Artists in the World of Fragrances", text: "Published in MooDaily. Visual artists engaging with olfactory sense, scent creation, and perfumery." },
-  { title: "Hybrids. Trans-corporeal Performances at the Labyrinth Gallery in Lublin in the 1970s", text: "Published in Sešitu pro umění, teorii a příbuzné zóny 36/2024. Analysis of Teresa Murak, Krzysztof Zarębski, Tomek Kawiak, Józef Robakowski. Part of PhD research." },
-  { title: "Herbalists. Teresa Murak and her Daughters", text: "Published in Kwartalik Rzeźby Orońsko. Collaborative creative process with plants featuring multiple artists." },
-  { title: "Art Guide to Barcelona", text: "Published in Mood Scent Bar. Micro guide to contemporary art venues, galleries, and events. Context: Manifesta Biennial opening September 2024." },
-  { title: "Interview with Jakub Gliński", text: "Published in PURO Hotels Mag. Topics: Creative process, ADHD, transition from hardcore scene to gallery world. Connection: First exhibition as Dzidy duo in 2018." },
-  { title: "Public programs for \"From the Ashes\" exhibition", text: "Zachęta National Gallery of Art, Warsaw. Educational activities, author tours, workshops, performances, concerts. Artists: Antonina Nowacka, Planet Luz, X-Philes collective, others." },
-  { title: "\"Call to Action!\" podcast in Vogue Polska", text: "Co-host: Aleksandra Skowronska. Topics: Art, climate catastrophe, technology-biology boundaries, interactive objects." },
-  { title: "Magazyn Zachęta Online", text: "Issue No. 39. Co-editors: Sablik and Aleksandra Skowronska. Essays on speculative turn in art, cyborg knowledge, climate catastrophe." },
-  { title: "Artsy Malaga", text: "Published in MooDaily. Guide to contemporary art in Malaga, museums, galleries, artist communities. Personal note: Lived in region for three months." },
-  { title: "From The Ashes exhibition", text: "Opens March 15 — Zachęta National Gallery of Art, Warsaw. Young artists' responses to crises since 2020; phoenix mythology narrative. 15 artists featured." },
-  { title: "Future-oriented Ljubljana", text: "Published in Contemporary Lynx Magazine. Five artists at intersection of art and technology, AI, digital identities." },
-  { title: "Art Update", text: "Published in Art Monitor. Digital artists' boundary between real and virtual, gallery translation, art market. 13 artists covered." },
-  { title: "Polish & Belarusian AI artists", text: "Published in Orońsko Sculpture Quarterly. Artists using AI tools, image generators; surveillance, deepfakes, internet culture themes." },
-  { title: "Dear Future Exhibition", text: "Opens November 24, 2023 — Galeria Bielska BWA, Bielsko-Biała. Ukrainian-Polish reflection on future in context of crises. 12 artists featured." },
-  { title: "New Article: David Hockney's iPad", text: "Published in Moodaily. 86-year-old artist painting still lifes using iPad technology. Exhibition: David Benrimon Fine Art Gallery, New York." },
-  { title: "Autumn 2023 Best Exhibitions", text: "Published in Mood Scent Bar. Subjective selection across European galleries." },
-  { title: "Vogue: Young Talents", text: "Published in Vogue Magazine, September edition. Sablik profiled as visual arts protagonist among young talents. Photographer: Maciek Edelman. Interviewer: Julia Właszczuk." },
+  { title: "Book launch of Liliana Zeic's monograph in Warsaw", text: "March 24, 6:00 PM — Museum of Modern Art, Warsaw. First comprehensive publication examining Zeic's work, combining critical essays with visual material, exploring gender identity, sexuality, and nature studies.", link: "https://artmuseum.pl/wydarzenia/ksiazka-w-muzeum-premiera-monografii-liliany-zeic" },
+  { title: "Exhibition at the National Gallery of Kosovo", text: "Laureta Hajrullahu's first solo exhibition exploring identity and digital spaces, featuring games, algorithms, internet culture, and immersive video works.", link: "https://www.galeriakombetare-rks.com/en/ekspozitat" },
+  { title: "Artysta Zawodowiec: The ING Polish Art Foundation", text: "March 19 — Lecturer and portfolio consultant. First steps in international art careers, grants, exchange programs, practical advice from curatorial experience.", link: "https://ingart.pl/pl/az/news/a_z_10" },
+  { title: "Cura: lecture at the Grid in Gdańsk", text: "February 12, 2026, 6 PM — Artistic debut as biographical moment and institutional construct; eight years working with emerging artists.", link: "https://gridarthub.pl/event/27" },
+  { title: "Upcoming art events and festivals in 2026", text: "Published in Moodaily. Research on international art events worth marking in 2026 calendar.", link: "https://moodscentbar.com/pl/moodaily/post/262_najlepsze-wystawy-i-festiwale-sztuki-w-2026-roku" },
+  { title: "New book by Anna Raczyńska", text: "\"Old Habits, New Beginnings\" — 200+ page dual-language Polish-German catalogue featuring essays by Sablik and others. Promotional event at KVOST Berlin in January 2025.", link: "http://annasteinherz.com/publications/" },
+  { title: "The City of Women Exhibition", text: "Museum of Modern Art — Four-part feminist art exhibition; Sablik curates \"Other Tomorrows\" section with Vera Zalutskaya.", link: "https://artmuseum.pl/en/exhibitions/the-city-of-women" },
+  { title: "Self-Portrait with Tongue Out: book by Paulina Stasik", text: "Published by BWA Tarnów. Designer: Agata Biskup. Artist's works from five years with commentaries and critical essays by Sablik and Natalia Gierowska.", link: "https://www.bwa.tarnow.pl" },
+  { title: "New exhibition by Paulina Stasik", text: "October 19 onwards — Biuro Wystaw Artystycznych, Tarnów. Paintings and pastels; accompanying book launch.", link: "https://www.facebook.com/events/826392516725762/" },
+  { title: "Curated Walks in Barcelona", text: "Three relaxed art walks through city galleries and institutions. For beginners and art enthusiasts; includes casual discussion afterward.", link: "https://luma.com/user/usr-iJcSm302I4zjTWB" },
+  { title: "Catalogue for \"Swarożyce. Contemporary Woman's* Metalwork\"", text: "Design: Karolina Pietrzyk and Tobi Wenig. Curatorial text, essays on women's metalwork history, fiction piece.", link: "https://ksiegarnia.rzezba-oronsko.pl/product_info.php?products_id=266" },
+  { title: "Interview for MiejMiejsce.pl", text: "Topic: Relational curation, collectivity, activism, identity politics and alternatives. Interviewer: Gabi Skrzypczak.", link: "https://miejmiejsce.com/sztuka/jak-robic-wystawy-w-czasach-polikryzysu" },
+  { title: "Slime. Joanna Fluder Exhibition", text: "July 24 – October 19, 2025 — Zachęta, Warsaw. 140 gouaches and premiere installations exploring motherhood, neurodivergence, care, and nature.", link: "https://zacheta.art.pl/en/wystawy/joanna-fluder-sluz" },
+  { title: "Soft Smiths. Contemporary women's* metalwork", text: "July 5 – August 24, 2025 — Centre of Polish Sculpture, Orońsko. 11 international artists working with metal.", link: "" },
+  { title: "Collaboration with AWARE", text: "Biogram of Urszula Broll for Archives of Women Artists. Key figure in Katowice underground scene.", link: "https://awarewomenartists.com/en/artiste/urszula-broll/" },
+  { title: "Identity Crisis Network Conference", text: "May 23–24, 2025 — Museum of Modern Art, Zagreb. 20 scholars, curators, artists invited to challenge notions of identity and subjectivity.", link: "https://identitycrisisnetwork.com/conference-2025/" },
+  { title: "Group exhibition: Hyperlocality: Personal Cartographies", text: "May 15 opening — CasCaDas ArtSpace, Barcelona. Personal maps and geographies of Barcelona-based international artists.", link: "https://fb.me/e/5wjXuq3Ri" },
+  { title: "Mammals and Suckers Exhibition", text: "April 4 – May 31, 2025 — Galeria HOS, Warsaw. Ida Karkoszka and Karolina Wysocka exploring socio-ecological issues.", link: "https://www.facebook.com/events/563773252677138/" },
+  { title: "Justyna Smoleń's catalog", text: "Catalog for \"Fragile Dreams\" exhibition. Texts by Olga Drenda, Ewa Borysewicz, and interview by Sablik. Book launch April 1 at Bunkier Sztuki Gallery, Kraków.", link: "https://bunkier.art.pl/exhibition/justyna-smolen-kruche-sny/" },
+  { title: "Exhibition Open Call: Hyperlocality", text: "CasCaDas ArtSpace, Barcelona. Deadline: March 21, 2025. Micro-histories, community engagement, locality and globality intersection.", link: "https://www.cascadasartspace.com/open-calls-2025" },
+  { title: "Text for Edyta Hul's catalog", text: "\"The Wild, the Dirty, and the Repressed\" — Exhibition: \"Something's in the Water\" at Galeria Bielska BWA, Bielsko-Biała.", link: "https://galeriabielska.pl/wystawa/edyta-hul-cos-jest-w-wodzie" },
+  { title: "Interview for Culture.pl about Identity Crisis Network", text: "Topic: Identity politics, institutional problems, curation, imagination crisis. With Vera Zalutskaya. Interviewer: Piotr Policht.", link: "https://culture.pl/pl/artykul/vera-zalutskaya-michalina-sablik-tozsamosc-stala-sie-narzedziem-w-politycznych-walkach-wywiad" },
+  { title: "Notes on 15. Manifesta Biennale", text: "Published in Moodaily. Barcelona Metropolitana — Analysis of four amazing locations and dialogues with spaces.", link: "https://moodscentbar.com/pl/moodaily/post/221_manifesta-2024-na-peryferiach-barcelony" },
+  { title: "Identity Crisis Network", text: "Collective: Vera Zalutskaya, Luka Cvetkovic, Luja Šimunović, Klara Petrović. New artistic practices in Eastern Europe responding to identity politics crisis. Events: Online seminars, study visits, Zagreb conference 2025.", link: "https://identitycrisisnetwork.com" },
+  { title: "A Man Eating His Own Tail: exhibition by Przemek Branas", text: "September 26 – November 2, 2024 — CasCaDas ArtSpace, Barcelona. Ouroboros mythology and eternal return symbolism.", link: "https://www.facebook.com/events/1663407687778297" },
+  { title: "Lecture for Culture Makes: Decolonialism in art institutions", text: "Decolonial practices, marginal voices, gallery and museum critique. Reference: Venice Art Biennale theme \"Foreigners are everywhere.\"", link: "https://www.youtube.com/watch?v=gMLMEEswozk&t=2947s" },
+  { title: "We Are a Dream: exhibition in Leipzig", text: "Early September — Kunsthalle.Ost, Leipzig. Artist: Aleksandra Liput. Based on Ursula Le Guin's \"The Lathe of Heaven.\"", link: "https://fb.me/e/5h2KSQtrr" },
+  { title: "Smelling Art. Artists in the World of Fragrances", text: "Published in MooDaily. Visual artists engaging with olfactory sense, scent creation, and perfumery.", link: "https://moodscentbar.com/pl/moodaily/post/208_poczuc-sztuke-artysci-i-artystki-w-swiecie-zapachow" },
+  { title: "Hybrids. Trans-corporeal Performances at the Labyrinth Gallery in Lublin in the 1970s", text: "Published in Sešitu pro umění, teorii a příbuzné zóny 36/2024. Analysis of Teresa Murak, Krzysztof Zarębski, Tomek Kawiak, Józef Robakowski. Part of PhD research.", link: "https://vvp.avu.cz/sesit/sesit-36/" },
+  { title: "Herbalists. Teresa Murak and her Daughters", text: "Published in Kwartalik Rzeźby Orońsko. Collaborative creative process with plants featuring multiple artists.", link: "https://ksiegarnia.rzezba-oronsko.pl/index.php?view=all&cPath=1" },
+  { title: "Art Guide to Barcelona", text: "Published in Mood Scent Bar. Micro guide to contemporary art venues, galleries, and events. Context: Manifesta Biennial opening September 2024.", link: "https://moodscentbar.com/pl/moodaily/post/190_barcelona-przewodnik-po-muzeach-i-galeriach-sztuki-wspolczesnej" },
+  { title: "Interview with Jakub Gliński", text: "Published in PURO Hotels Mag. Topics: Creative process, ADHD, transition from hardcore scene to gallery world. Connection: First exhibition as Dzidy duo in 2018.", link: "https://purohotel.pl/en/puro-mag/jakub-glinski/" },
+  { title: "Public programs for \"From the Ashes\" exhibition", text: "Zachęta National Gallery of Art, Warsaw. Educational activities, author tours, workshops, performances, concerts. Artists: Antonina Nowacka, Planet Luz, X-Philes collective, others.", link: "https://zacheta.art.pl/pl/wystawy/z-popiolow" },
+  { title: "\"Call to Action!\" podcast in Vogue Polska", text: "Co-host: Aleksandra Skowronska. Topics: Art, climate catastrophe, technology-biology boundaries, interactive objects.", link: "https://www.vogue.pl/a/podcast-call-to-action-s-5-odc-1-sztuka-nieobojetnosci-nowe-otwarcie-zachety" },
+  { title: "Magazyn Zachęta Online", text: "Issue No. 39. Co-editors: Sablik and Aleksandra Skowronska. Essays on speculative turn in art, cyborg knowledge, climate catastrophe.", link: "https://zacheta.art.pl/magazyn/en/" },
+  { title: "Artsy Malaga", text: "Published in MooDaily. Guide to contemporary art in Malaga, museums, galleries, artist communities. Personal note: Lived in region for three months.", link: "https://moodscentbar.com/pl/moodaily/post/179_artystyczna-malaga" },
+  { title: "From The Ashes exhibition", text: "Opens March 15 — Zachęta National Gallery of Art, Warsaw. Young artists' responses to crises since 2020; phoenix mythology narrative. 15 artists featured.", link: "https://zacheta.art.pl/pl/wystawy/z-popiolow" },
+  { title: "Future-oriented Ljubljana", text: "Published in Contemporary Lynx Magazine. Five artists at intersection of art and technology, AI, digital identities.", link: "https://contemporarylynx.co.uk/future-oriented-ljubljana" },
+  { title: "Art Update", text: "Published in Art Monitor. Digital artists' boundary between real and virtual, gallery translation, art market. 13 artists covered.", link: "https://artmonitor.bigcartel.com" },
+  { title: "Polish & Belarusian AI artists", text: "Published in Orońsko Sculpture Quarterly. Artists using AI tools, image generators; surveillance, deepfakes, internet culture themes.", link: "https://ksiegarnia.rzezba-oronsko.pl/index.php?cPath=1" },
+  { title: "Dear Future Exhibition", text: "Opens November 24, 2023 — Galeria Bielska BWA, Bielsko-Biała. Ukrainian-Polish reflection on future in context of crises. 12 artists featured.", link: "https://galeriabielska.pl/wystawa/dear-future-vol-2" },
+  { title: "New Article: David Hockney's iPad", text: "Published in Moodaily. 86-year-old artist painting still lifes using iPad technology. Exhibition: David Benrimon Fine Art Gallery, New York.", link: "https://moodscentbar.com/pl/moodaily/post/135_ipad-davida-hockneya" },
+  { title: "Autumn 2023 Best Exhibitions", text: "Published in Mood Scent Bar. Subjective selection across European galleries.", link: "https://moodscentbar.com/pl/moodaily/post/131_najwazniejsze-wystawy-jesieni-2023" },
+  { title: "Vogue: Young Talents", text: "Published in Vogue Magazine, September edition. Sablik profiled as visual arts protagonist among young talents. Photographer: Maciek Edelman. Interviewer: Julia Właszczuk.", link: "https://www.vogue.pl" },
 ];
 ---
 <Base title="News — Michalina Sablik">
@@ -59,7 +57,13 @@ const news = [
           <img src={`/images/news/news-${i + 1}.jpg`} alt={item.title} loading="lazy"
             style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;border-radius:4px;"
             onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
-          <h3>{item.title}</h3>
+          <h3>
+            {item.link ? (
+              <a href={item.link} target="_blank" rel="noopener">{item.title}</a>
+            ) : (
+              item.title
+            )}
+          </h3>
           <p>{item.text}</p>
         </div>
       ))}

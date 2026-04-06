@@ -254,6 +254,37 @@ h4 { font-size: 22px; font-weight: 700; }
   line-height: 1.7;
 }
 
+/* Exhibition detail */
+.exhibition-detail-venue {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--gray-light);
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.exhibition-detail-body {
+  max-width: 842px;
+  margin-bottom: 2.5rem;
+}
+.exhibition-detail-body p {
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+.exhibition-detail-credits {
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+  max-width: 842px;
+}
+.exhibition-detail-credits p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 0.3rem;
+}
+
 /* Hero image */
 .hero-image {
   margin: 2rem 0;

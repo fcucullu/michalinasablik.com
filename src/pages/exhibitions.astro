@@ -2,36 +2,36 @@
 import Base from '../layouts/Base.astro';
 
 const exhibitions = [
-  { title: "Exhibition by Gvantsa Jishkariani", venue: "Espai Souvenir, Barcelona", year: "2026" },
-  { title: "to undo, to crumble, to vanish", venue: "National Museum of Kosovo", year: "2026" },
-  { title: "Other Tomorrows / City of Women", venue: "Museum of Modern Art in Warsaw", year: "2025–2026" },
-  { title: "A View of One's Own by Paulina Stasik", venue: "BWA Tarnów", year: "2025" },
-  { title: "Slime by Joanna Fluder", venue: "Zachęta National Gallery, Warsaw", year: "2025" },
-  { title: "Soft Smiths. Contemporary Women's* Metalwork", venue: "Center of Polish Sculpture, Orońsko", year: "2025" },
-  { title: "Hyperlocality. Personal Cartographies", venue: "CasCaDas ArtSpace, Barcelona", year: "2025" },
-  { title: "Mammals&Suckers", venue: "HOS Gallery, Warsaw", year: "2025" },
-  { title: "Fragile Dreams", venue: "Bunkier Sztuki, Kraków", year: "2025" },
-  { title: "A Man Eating His Own Tail", venue: "CasCaDas ArtSpace, Barcelona", year: "2024" },
-  { title: "We Are a Dream", venue: "Kunsthale.Ost, Leipzig", year: "2024" },
-  { title: "From The Ashes", venue: "Zachęta National Gallery, Warsaw", year: "2024" },
-  { title: "Apparently Small Significance of Puddles", venue: "Art Walk Gallery", year: "2023" },
-  { title: "Hit Me With Your Car", venue: "Galeria Promocyjna", year: "2023" },
-  { title: "I Stand in Front of the Mirror Like Dog and Paint", venue: "HOS Gallery", year: "2023" },
-  { title: "Skin Deep", venue: "KRAKERS", year: "2023" },
-  { title: "And Rivers Will Flow with Date Syrup", venue: "Galeria Promocyjna", year: "2023" },
-  { title: "Quench Thirst with Dew", venue: "UFO Art Gallery", year: "2023" },
-  { title: "Cool Lips of Waves", venue: "Gdańska Galeria Miejska", year: "2022" },
-  { title: "Room of Projected Horizons", venue: "Galeria Promocyjna", year: "2022" },
-  { title: "In these days of tumult, heat and dazzle…", venue: "Stefan Gierowski's Foundation", year: "2021" },
-  { title: "Pure Crystal", venue: "Galeria Promocyjna", year: "2021" },
-  { title: "Warsaw Preview", venue: "Jazdów", year: "2021" },
-  { title: "Year on the Protests", venue: "Krakow Photomonth", year: "2021" },
-  { title: "A Dream Within a Dream", venue: "Magic Garden", year: "2020" },
-  { title: "Beautiful Losers", venue: "Jak zapomnieć", year: "2020" },
-  { title: "Poland of Our Dreams", venue: "Warsaw", year: "2019" },
-  { title: "Snake-Man", venue: "Jak zapomnieć", year: "2019" },
-  { title: "Apetite", venue: "Warsaw", year: "2018" },
-  { title: "#behappyalways", venue: "Warsaw", year: "2018" },
+  { title: "Exhibition by Gvantsa Jishkariani", venue: "Espai Souvenir, Barcelona", year: "2026", slug: "" },
+  { title: "to undo, to crumble, to vanish", venue: "National Museum of Kosovo", year: "2026", slug: "" },
+  { title: "Other Tomorrows / City of Women", venue: "Museum of Modern Art in Warsaw", year: "2025–2026", slug: "" },
+  { title: "A View of One's Own by Paulina Stasik", venue: "BWA Tarnów", year: "2025", slug: "paulina-stasik" },
+  { title: "Slime by Joanna Fluder", venue: "Zachęta National Gallery, Warsaw", year: "2025", slug: "slime-by-joanna-fluder" },
+  { title: "Soft Smiths. Contemporary Women's* Metalwork", venue: "Center of Polish Sculpture, Orońsko", year: "2025", slug: "soft-smiths" },
+  { title: "Hyperlocality. Personal Cartographies", venue: "CasCaDas ArtSpace, Barcelona", year: "2025", slug: "hyperlocality" },
+  { title: "Mammals&Suckers", venue: "HOS Gallery, Warsaw", year: "2025", slug: "mammalssuckers" },
+  { title: "Fragile Dreams", venue: "Bunkier Sztuki, Kraków", year: "2025", slug: "fragile-dreams" },
+  { title: "A Man Eating His Own Tail", venue: "CasCaDas ArtSpace, Barcelona", year: "2024", slug: "a-man-eating-his-own-tail" },
+  { title: "We Are a Dream", venue: "Kunsthale.Ost, Leipzig", year: "2024", slug: "we-are-a-dream" },
+  { title: "From The Ashes", venue: "Zachęta National Gallery, Warsaw", year: "2024", slug: "from-the-ashes" },
+  { title: "Apparently Small Significance of Puddles", venue: "Art Walk Gallery", year: "2023", slug: "exhibition-1" },
+  { title: "Hit Me With Your Car", venue: "Galeria Promocyjna", year: "2023", slug: "hit-me-with-your-car" },
+  { title: "I Stand in Front of the Mirror Like Dog and Paint", venue: "HOS Gallery", year: "2023", slug: "maja-krysiak" },
+  { title: "Skin Deep", venue: "KRAKERS", year: "2023", slug: "skin-deep" },
+  { title: "And Rivers Will Flow with Date Syrup", venue: "Galeria Promocyjna", year: "2023", slug: "ania-grzymala" },
+  { title: "Quench Thirst with Dew", venue: "UFO Art Gallery", year: "2023", slug: "quench-thirst-with-dew" },
+  { title: "Cool Lips of Waves", venue: "Gdańska Galeria Miejska", year: "2022", slug: "" },
+  { title: "Room of Projected Horizons", venue: "Galeria Promocyjna", year: "2022", slug: "room-of-projected-horizons" },
+  { title: "In these days of tumult, heat and dazzle…", venue: "Stefan Gierowski's Foundation", year: "2021", slug: "in-these-days-of-tumult-heat-and-dazzle" },
+  { title: "Pure Crystal", venue: "Galeria Promocyjna", year: "2021", slug: "czysty-krysztal" },
+  { title: "Warsaw Preview", venue: "Jazdów", year: "2021", slug: "warsaw-preview" },
+  { title: "Year on the Protests", venue: "Krakow Photomonth", year: "2021", slug: "year-on-protest" },
+  { title: "A Dream Within a Dream", venue: "Magic Garden", year: "2020", slug: "sen-we-snie" },
+  { title: "Beautiful Losers", venue: "Jak zapomnieć", year: "2020", slug: "beautiful-loosers" },
+  { title: "Poland of Our Dreams", venue: "Warsaw", year: "2019", slug: "poland-of-our-dreams" },
+  { title: "Snake-Man", venue: "Jak zapomnieć", year: "2019", slug: "snake-man" },
+  { title: "Apetite", venue: "Warsaw", year: "2018", slug: "apetite" },
+  { title: "#behappyalways", venue: "Warsaw", year: "2018", slug: "behappyalways" },
 ];
 ---
 <Base title="Exhibitions — Michalina Sablik">
@@ -40,13 +40,25 @@ const exhibitions = [
     <div class="exhibition-list" style="margin-top: 2rem;">
       {exhibitions.map((ex, i) => (
         <div class="exhibition-entry" style="margin-bottom: 2.5rem;">
-          <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
-            style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
-            onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
+          {ex.slug ? (
+            <a href={`/exhibitions/${ex.slug}/`}>
+              <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
+                style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
+                onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
+            </a>
+          ) : (
+            <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
+              style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
+              onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
+          )}
           <div class="exhibition-item">
             <span class="exhibition-year">{ex.year}</span>
             <div>
-              <span class="exhibition-title">{ex.title}</span>
+              {ex.slug ? (
+                <a href={`/exhibitions/${ex.slug}/`} class="exhibition-title">{ex.title}</a>
+              ) : (
+                <span class="exhibition-title">{ex.title}</span>
+              )}
               <span class="exhibition-venue"> — {ex.venue}</span>
             </div>
           </div>
