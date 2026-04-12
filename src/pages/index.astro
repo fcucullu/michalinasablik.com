@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 
 const slides = [
-  { image: "/images/exhibitions/permitted-vulnerability/2.jpg", title: "Permitted Vulnerability. Gvantsa Jishkariani", subtitle: "Espai Souvenir, Barcelona | 2026", link: "/exhibitions/permitted-vulnerability/", type: "exhibition" },
+  { image: "/images/exhibitions/permitted-vulnerability/2.jpg", mobileImage: "/images/exhibitions/permitted-vulnerability/1.jpg", title: "Permitted Vulnerability. Gvantsa Jishkariani", subtitle: "Espai Souvenir, Barcelona | 2026", link: "/exhibitions/permitted-vulnerability/", type: "exhibition" },
   { image: "/images/news/news-1-hero.jpg", title: "Hydrosex Call: Justyna Górowska", subtitle: "Zagreb: Pogon Jedinstvo | April 23, 2026", link: "/news/", type: "news" },
   { image: "/images/exhibitions/text-laureta/1.jpg", title: "to undo, to crumble, to vanish. Laureta Hajrullahu", subtitle: "National Gallery of Kosovo QAFA | 2026", link: "/exhibitions/text-laureta/", type: "exhibition" },
   { image: "/images/news/news-5.jpg", title: "Artysta Zawodowiec: The ING Polish Art Foundation", subtitle: "Lecturer and portfolio consultant | March 2026", link: "/news/", type: "news" },
@@ -14,7 +14,14 @@ const slides = [
   <div class="slideshow">
     {slides.map((slide, i) => (
       <div class={`slide ${i === 0 ? 'active' : ''}`} data-index={i}>
-        <img src={slide.image} alt={slide.title} />
+        {slide.mobileImage ? (
+          <picture>
+            <source media="(max-width: 700px)" srcset={slide.mobileImage} />
+            <img src={slide.image} alt={slide.title} />
+          </picture>
+        ) : (
+          <img src={slide.image} alt={slide.title} />
+        )}
         <div class="slide-overlay">
           <span class="slide-type">{slide.type}</span>
           <h2 class="slide-title">
