@@ -1,43 +1,27 @@
-# Astro Starter Kit: Minimal
+# michalinasablik.com
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Personal website and portfolio of **Michalina Sablik** — art curator, critic, and researcher based in Barcelona.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## About
 
-## 🚀 Project Structure
+Michalina Sablik is a curator and art researcher working at the intersection of contemporary art, feminist theory, and post-colonial discourse. She has curated exhibitions at major institutions including Zachęta National Gallery of Art in Warsaw, Museum of Modern Art in Warsaw, Centre of Polish Sculpture in Orońsko, Bunkier Sztuki in Kraków, and the National Gallery of Kosovo, among others.
 
-Inside of your Astro project, you'll see the following folders and files:
+Her curatorial practice explores themes of identity, corporeality, ecology, and the relationship between art and technology. She is a co-founder of the Identity Crisis Network and has published in outlets including Vogue Polska, Contemporary Lynx, Culture.pl, and academic journals.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Website
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+The site showcases:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **Exhibitions** — Full curatorial texts, credits, and photo documentation for 25+ exhibitions (2018–2026)
+- **News** — Articles, lectures, publications, performances, and upcoming events
+- **About** — Bio, contact, and social links
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Tech Stack
 
-## 🧞 Commands
+- [Astro](https://astro.build) — Static site generator
+- Deployed on [Vercel](https://vercel.com)
+- Domain: [michalinasablik.com](https://michalinasablik.com)
 
-All commands are run from the root of the project, from a terminal:
+## Author
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Built by [Francisco Cucullu](https://franciscocucullu.com)
