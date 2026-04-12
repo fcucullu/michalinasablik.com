@@ -36,12 +36,17 @@ import Base from '../layouts/Base.astro';
     </div>
   </div>
   <style>
+    .about-content {
+      max-width: 100%;
+      overflow: visible;
+    }
     .about-layout {
       display: grid;
       grid-template-columns: 1fr 400px;
       gap: 3rem;
       align-items: start;
       margin-right: calc(-1.5rem);
+      width: calc(100% + 1.5rem);
     }
     .about-photo {
       position: sticky;
