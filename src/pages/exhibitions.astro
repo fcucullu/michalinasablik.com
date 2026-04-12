@@ -52,15 +52,14 @@ const exhibitions = [
               onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
           )}
           <div class="exhibition-item">
-            <span class="exhibition-year">{ex.year}</span>
             <div>
               {ex.slug ? (
                 <a href={`/exhibitions/${ex.slug}/`} class="exhibition-title">{ex.title}</a>
               ) : (
                 <span class="exhibition-title">{ex.title}</span>
               )}
-              <span class="exhibition-venue"> — {ex.venue}</span>
             </div>
+            <div class="exhibition-venue">{ex.venue} | {ex.year}</div>
           </div>
         </div>
       ))}
