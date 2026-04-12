@@ -58,28 +58,59 @@ const news = [
     <div class="news-list" style="margin-top: 2rem;">
       {news.map((item, i) => (
         <div class="news-item">
-          {item.link ? (
-            <a href={item.link} target="_blank" rel="noopener">
-              <img src={`/images/news/news-${i + 1}.jpg`} alt={item.title} loading="lazy"
-                style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;border-radius:4px;cursor:pointer;"
-                onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
-            </a>
-          ) : (
-            <img src={`/images/news/news-${i + 1}.jpg`} alt={item.title} loading="lazy"
-              style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;border-radius:4px;"
-              onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
-          )}
-          <h3>
+          <div class="news-image">
             {item.link ? (
-              <a href={item.link} target="_blank" rel="noopener">{item.title}</a>
+              <a href={item.link} target="_blank" rel="noopener">
+                <img src={`/images/news/news-${i + 1}.jpg`} alt={item.title} loading="lazy"
+                  onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
+              </a>
             ) : (
-              item.title
+              <img src={`/images/news/news-${i + 1}.jpg`} alt={item.title} loading="lazy"
+                onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
             )}
-          </h3>
-          {item.details && <p style="font-size: 0.9em; color: #999; margin-bottom: 0.5rem;">{item.details}</p>}
-          <p>{item.text}</p>
+          </div>
+          <div class="news-content">
+            <h3>
+              {item.link ? (
+                <a href={item.link} target="_blank" rel="noopener">{item.title}</a>
+              ) : (
+                item.title
+              )}
+            </h3>
+            {item.details && <p class="news-details">{item.details}</p>}
+            <p>{item.text}</p>
+          </div>
         </div>
       ))}
     </div>
   </div>
+  <style>
+    .news-item {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .news-image img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .news-details {
+      font-size: 0.9em;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 700px) {
+      .news-item {
+        grid-template-columns: 1fr;
+      }
+      .news-image img {
+        aspect-ratio: 16/9;
+        max-height: 300px;
+      }
+    }
+  </style>
 </Base>

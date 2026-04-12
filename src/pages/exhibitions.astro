@@ -37,9 +37,9 @@ const exhibitions = [
 <Base title="Exhibitions — Michalina Sablik">
   <div class="container page-content">
     <h1>Exhibitions</h1>
-    <div class="exhibition-list" style="margin-top: 2rem;">
+    <div class="exhibition-list" style="margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
       {exhibitions.map((ex, i) => (
-        <div class="exhibition-entry" style="margin-bottom: 2.5rem;">
+        <div class="exhibition-entry" style="margin-bottom: 0;">
           {ex.slug ? (
             <a href={`/exhibitions/${ex.slug}/`}>
               <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
@@ -66,4 +66,12 @@ const exhibitions = [
       ))}
     </div>
   </div>
+  <style>
+    @media (max-width: 900px) {
+      .exhibition-list { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 600px) {
+      .exhibition-list { grid-template-columns: 1fr !important; }
+    }
+  </style>
 </Base>
