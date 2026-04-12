@@ -58,9 +58,17 @@ const news = [
     <div class="news-list" style="margin-top: 2rem;">
       {news.map((item, i) => (
         <div class="news-item">
-          <img src={`/images/news/news-${i + 1}.jpg`} alt={item.title} loading="lazy"
-            style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;border-radius:4px;"
-            onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
+          {item.link ? (
+            <a href={item.link} target="_blank" rel="noopener">
+              <img src={`/images/news/news-${i + 1}.jpg`} alt={item.title} loading="lazy"
+                style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;border-radius:4px;cursor:pointer;"
+                onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
+            </a>
+          ) : (
+            <img src={`/images/news/news-${i + 1}.jpg`} alt={item.title} loading="lazy"
+              style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;border-radius:4px;"
+              onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
+          )}
           <h3>
             {item.link ? (
               <a href={item.link} target="_blank" rel="noopener">{item.title}</a>
