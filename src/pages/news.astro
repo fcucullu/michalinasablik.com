@@ -54,7 +54,6 @@ const news = [
 ---
 <Base title="News — Michalina Sablik">
   <div class="container page-content">
-    <h1>News</h1>
     <div class="year-tabs" style="display: flex; gap: 1rem; margin-bottom: 2rem; margin-top: 2rem; flex-wrap: wrap;">
       <button class="year-tab active" data-year="2026">2026</button>
       <button class="year-tab" data-year="2025">2025</button>
@@ -111,8 +110,9 @@ const news = [
       color: #fff;
     }
     .year-tab.active {
-      color: #fff;
-      border-bottom-color: #fff;
+      color: #000;
+      font-weight: 700;
+      border-bottom-color: #000;
     }
     .news-item {
       display: grid;
