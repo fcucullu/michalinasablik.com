@@ -170,6 +170,7 @@ h4 { font-size: 22px; font-weight: 700; }
 .exhibition-item {
   display: block;
   margin-top: 0.5rem;
+  text-align: center;
 }
 .exhibition-year {
   font-size: 15px;
