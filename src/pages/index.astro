@@ -1,20 +1,159 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const slides = [
+  { image: "/images/exhibitions/text-laureta/1.jpg", title: "to undo, to crumble, to vanish", subtitle: "National Gallery of Kosovo QAFA | 2026", link: "/exhibitions/text-laureta/", type: "exhibition" },
+  { image: "/images/news/news-1.jpg", title: "Hydrosex Call: Justyna Górowska", subtitle: "Zagreb: Pogon Jedinstvo | April 23, 2026", link: "", type: "news" },
+  { image: "/images/exhibitions/slime-by-joanna-fluder/1.jpg", title: "Slime. Joanna Fluder", subtitle: "Zachęta National Gallery of Art, Warsaw | 2025", link: "/exhibitions/slime-by-joanna-fluder/", type: "exhibition" },
+  { image: "/images/news/news-2.jpg", title: "Circassian Beauty by Elif Satanaya Özbay", subtitle: "Warsaw: Museum of Modern Art | April 2026", link: "https://artmuseum.pl/en/events/circassian-beauty-performance-by-elif-ozbay", type: "news" },
+  { image: "/images/exhibitions/soft-smiths/1.jpg", title: "Soft Smiths. Contemporary Women's* Metalwork", subtitle: "Center of Polish Sculpture in Orońsko | 2025", link: "/exhibitions/soft-smiths/", type: "exhibition" },
+  { image: "/images/news/news-3.jpg", title: "Book launch: Liliana Zeic's monograph", subtitle: "Warsaw: Museum of Modern Art | March 2026", link: "https://artmuseum.pl/wydarzenia/ksiazka-w-muzeum-premiera-monografii-liliany-zeic", type: "news" },
+];
 ---
 <Base title="Michalina Sablik — Art Curator">
-  <div class="container">
-    <div class="newsletter">
-      <h3>Subscribe to my monthly newsletter</h3>
-      <form>
-        <input type="email" placeholder="Your email" />
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
-
-    <div class="hero-image">
-      <a href="https://artmuseum.pl/en/exhibitions/the-city-of-women" target="_blank">
-        <img src="/images/hero.jpg" alt="The City of Women exhibition" />
-      </a>
+  <div class="slideshow">
+    {slides.map((slide, i) => (
+      <div class={`slide ${i === 0 ? 'active' : ''}`} data-index={i}>
+        <img src={slide.image} alt={slide.title} />
+        <div class="slide-overlay">
+          <span class="slide-type">{slide.type}</span>
+          <h2 class="slide-title">
+            {slide.link ? (
+              <a href={slide.link} target={slide.link.startsWith('http') ? '_blank' : '_self'} rel="noopener">{slide.title}</a>
+            ) : (
+              slide.title
+            )}
+          </h2>
+          <p class="slide-subtitle">{slide.subtitle}</p>
+        </div>
+      </div>
+    ))}
+    <button class="slide-prev" onclick="slideNav(-1)">&#8249;</button>
+    <button class="slide-next" onclick="slideNav(1)">&#8250;</button>
+    <div class="slide-dots">
+      {slides.map((_, i) => (
+        <button class={`dot ${i === 0 ? 'active' : ''}`} data-dot={i} onclick={`goSlide(${i})`} />
+      ))}
     </div>
   </div>
+
+  <style>
+    .slideshow {
+      position: relative;
+      width: 100vw;
+      height: calc(100vh - 70px);
+      margin-left: calc(-50vw + 50%);
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .slide.active { opacity: 1; }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 3rem 4rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    }
+    .slide-type {
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .slide-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .slide-title a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .slide-title a:hover { text-decoration: underline; }
+    .slide-subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+    }
+    .slide-prev, .slide-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: rgba(255,255,255,0.7);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 1rem;
+      z-index: 10;
+    }
+    .slide-prev { left: 1rem; }
+    .slide-next { right: 1rem; }
+    .slide-prev:hover, .slide-next:hover { color: #fff; }
+    .slide-dots {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 10;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.5);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot.active { background: #fff; }
+    @media (max-width: 700px) {
+      .slide-overlay { padding: 2rem 1.5rem; }
+      .slide-title { font-size: 1.3rem; }
+    }
+  </style>
+
+  <script is:inline>
+    const totalSlides = 6;
+    let current = 0;
+    let timer;
+
+    function goSlide(n) {
+      document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+      current = n;
+      document.querySelector(`.slide[data-index="${current}"]`).classList.add('active');
+      document.querySelector(`.dot[data-dot="${current}"]`).classList.add('active');
+      resetTimer();
+    }
+
+    function slideNav(dir) {
+      goSlide((current + dir + totalSlides) % totalSlides);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => slideNav(1), 5000);
+    }
+
+    window.goSlide = goSlide;
+    window.slideNav = slideNav;
+    resetTimer();
+  </script>
 </Base>
