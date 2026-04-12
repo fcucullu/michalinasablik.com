@@ -168,9 +168,8 @@ h4 { font-size: 22px; font-weight: 700; }
   gap: 2rem;
 }
 .exhibition-item {
-  display: flex;
-  gap: 1rem;
-  align-items: baseline;
+  display: block;
+  margin-top: 0.5rem;
 }
 .exhibition-year {
   font-size: 15px;
