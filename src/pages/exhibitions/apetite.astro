@@ -1,8 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro';
+const photos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 ---
 <Base title="Apetite — Michalina Sablik">
   <div class="container page-content">
+    <div class="ex-layout">
+      <div class="ex-text">
     <h1>Apetite</h1>
     <p class="exhibition-detail-venue">Former Ambassador Restaurant, Warsaw | 2019</p>
     <div class="exhibition-detail-body">
@@ -14,18 +17,124 @@ import Base from '../../layouts/Base.astro';
       <p><strong>Artists:</strong> Yui Akiyama, Jakub Gliński, Marcin Janusz, Martyna Kielesińska, Jan Możdżyński, Aleksandra Liput, Zofia Pałucha</p>
       <p><strong>Curators:</strong> Aleksandra Liput, Michalina Sablik (Dzidy Duo)</p>
     </div>
-    <div class="exhibition-gallery" style="margin-top: 2.5rem; display: grid; gap: 1rem;">
-      <img src="/images/exhibitions/apetite/1.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/2.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/3.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/4.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/5.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/6.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/7.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/8.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/9.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/10.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
-      <img src="/images/exhibitions/apetite/11.jpg" alt="Exhibition view" loading="lazy" style="width:100%; border-radius: 4px;" />
+      </div>
+      <div class="ex-thumbs">
+        {photos.map((n) => (
+          <img src={`/images/exhibitions/apetite/${n}.jpg`} alt="Exhibition view" loading="lazy" class="thumb" data-index={n - 1} onclick="openLightbox(this.dataset.index)" />
+        ))}
+      </div>
     </div>
   </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lb-close" onclick="closeLightbox()">&times;</button>
+    <button class="lb-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <img id="lb-img" src="" alt="Exhibition view" />
+    <button class="lb-next" onclick="navLightbox(1)">&#8250;</button>
+  </div>
+
+  <style>
+    .ex-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .ex-thumbs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .thumb {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .thumb:hover { opacity: 0.8; }
+    @media (max-width: 700px) {
+      .ex-layout { grid-template-columns: 1fr; }
+      .ex-thumbs { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.active { display: flex; }
+    #lb-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .lb-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2.5rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .lb-prev, .lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 1rem;
+      z-index: 10;
+    }
+    .lb-prev { left: 1rem; }
+    .lb-next { right: 1rem; }
+    .lb-prev:hover, .lb-next:hover { color: #ccc; }
+  </style>
+
+  <script is:inline define:vars={{ photoCount: photos.length }}>
+    const totalPhotos = photoCount;
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = parseInt(index);
+      document.getElementById('lb-img').src = `/images/exhibitions/apetite/${currentIndex + 1}.jpg`;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navLightbox(dir) {
+      currentIndex = (currentIndex + dir + totalPhotos) % totalPhotos;
+      document.getElementById('lb-img').src = `/images/exhibitions/apetite/${currentIndex + 1}.jpg`;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    });
+
+    window.openLightbox = openLightbox;
+    window.closeLightbox = closeLightbox;
+    window.navLightbox = navLightbox;
+  </script>
 </Base>
