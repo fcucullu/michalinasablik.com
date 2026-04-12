@@ -6,54 +6,57 @@ import Base from '../layouts/Base.astro';
     <div class="about-content">
       <h1>About</h1>
 
-      <div class="about-intro">
+      <div class="about-layout">
         <div class="about-text">
           <p>Michalina Sablik is an art historian, curator of exhibitions and public programs, exploring art as a critical and speculative tool, the politics of the surreal and post-identity narratives.</p>
 
       <p>Since 2018, she has realized over 30 exhibitions in major institutions across Poland and abroad. She served as the coordinator at Adam Mickiewicz Institute (2018–2020), the manager of Galeria Promocyjna in Warsaw (2020–2023) and was a researcher-in-residence at MACBA in Barcelona (2024). She is currently completing her PhD at the University of Warsaw. Member of AICA and the Identity Crisis Network.</p>
+          <h3>Collaborations</h3>
+          <p>She is a collaborator at art organisations and centres, including MSN Warsaw, Zachęta National Gallery of Art, Museum of Contemporary Art in Zagreb, National Gallery of Kosovo, Bunkier Sztuki Gallery of Contemporary Art in Kraków, Goethe Institute, Stefan Gierowski Foundation in Warsaw, Gdańsk City Gallery, Polish Center of Sculpture in Orońsko, BWA Tarnów among others.</p>
+
+          <h3>Publications</h3>
+          <p>Her articles have been published in: Magazyn Zacheta Online, Art Monitor, NN6T, ETC Magazine, Szum Magazine, Notebook for Art, Theory and Related Zones, Contemporary Lynx Magazine, Magazyn Kontakt, Sztuka i Dokumentacja, Ikonotheka and numerous books and exhibition catalogs.</p>
+
+          <h3>Education</h3>
+          <ul class="education-list">
+            <li><strong>PhD Candidate</strong> — Doctoral Studies of Humanity, University of Warsaw (2021–2026)</li>
+            <li><strong>Postgraduate Studies</strong> — Cultural Diplomacy, Jagiellonian University in Krakow (2020–2021)</li>
+            <li><strong>Master's Degree</strong> — History of Art, University of Warsaw (2016–2018)</li>
+            <li><strong>Exchange Study</strong> — Gender and Postcolonial Studies, Universiteit Utrecht (2015–2016)</li>
+            <li><strong>Undergraduate</strong> — Interfaculty Individual Studies in Humanistic, Jagiellonian University in Krakow (2012–2015)</li>
+          </ul>
+
+          <h3>Languages</h3>
+          <p>English (C1), Spanish (B2), Italian (B1), Polish (native)</p>
         </div>
         <div class="about-photo">
           <img src="/images/about-portrait.jpg" alt="Michalina Sablik" />
         </div>
       </div>
-
-      <h3>Collaborations</h3>
-      <p>She is a collaborator at art organisations and centres, including MSN Warsaw, Zachęta National Gallery of Art, Museum of Contemporary Art in Zagreb, National Gallery of Kosovo, Bunkier Sztuki Gallery of Contemporary Art in Kraków, Goethe Institute, Stefan Gierowski Foundation in Warsaw, Gdańsk City Gallery, Polish Center of Sculpture in Orońsko, BWA Tarnów among others.</p>
-
-      <h3>Publications</h3>
-      <p>Her articles have been published in: Magazyn Zacheta Online, Art Monitor, NN6T, ETC Magazine, Szum Magazine, Notebook for Art, Theory and Related Zones, Contemporary Lynx Magazine, Magazyn Kontakt, Sztuka i Dokumentacja, Ikonotheka and numerous books and exhibition catalogs.</p>
-
-      <h3>Education</h3>
-      <ul class="education-list">
-        <li><strong>PhD Candidate</strong> — Doctoral Studies of Humanity, University of Warsaw (2021–2026)</li>
-        <li><strong>Postgraduate Studies</strong> — Cultural Diplomacy, Jagiellonian University in Krakow (2020–2021)</li>
-        <li><strong>Master's Degree</strong> — History of Art, University of Warsaw (2016–2018)</li>
-        <li><strong>Exchange Study</strong> — Gender and Postcolonial Studies, Universiteit Utrecht (2015–2016)</li>
-        <li><strong>Undergraduate</strong> — Interfaculty Individual Studies in Humanistic, Jagiellonian University in Krakow (2012–2015)</li>
-      </ul>
-
-      <h3>Languages</h3>
-      <p>English (C1), Spanish (B2), Italian (B1), Polish (native)</p>
     </div>
   </div>
   <style>
-    .about-intro {
+    .about-layout {
       display: grid;
-      grid-template-columns: 1fr 350px;
-      gap: 2rem;
+      grid-template-columns: 1fr 320px;
+      gap: 3rem;
       align-items: start;
-      margin-bottom: 2rem;
+    }
+    .about-photo {
+      position: sticky;
+      top: 2rem;
     }
     .about-photo img {
       width: 100%;
       border-radius: 4px;
     }
     @media (max-width: 700px) {
-      .about-intro {
+      .about-layout {
         grid-template-columns: 1fr;
       }
       .about-photo {
         order: -1;
+        position: static;
       }
     }
   </style>
