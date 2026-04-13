@@ -57,6 +57,144 @@ const slides = [
     </div>
   </div>
 
+  <!-- Contact -->
+  <div class="container contact-section">
+    <div class="contact-inner">
+      <h2 class="contact-heading">Let's Work Together</h2>
+      <p class="contact-subheading">Get in touch for collaborations in curating exhibitions, public programs & texts.</p>
+      <form id="contact-form" class="contact-form">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+        </div>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="form-status" class="form-status"></p>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .contact-section {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+      border-top: 1px solid #eee;
+      padding-top: 3rem;
+    }
+    .contact-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact-heading {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .contact-subheading {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--gray-light);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .contact-form {
+      text-align: left;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 300;
+      background: #fafafa;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--black);
+    }
+    .contact-form textarea {
+      margin-bottom: 1rem;
+      resize: vertical;
+    }
+    .contact-form button {
+      display: block;
+      width: 100%;
+      padding: 0.8rem;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .contact-form button:hover { opacity: 0.8; }
+    .contact-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .form-status {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+      min-height: 1.4em;
+    }
+    .form-status.success { color: #2d7a3a; }
+    .form-status.error { color: #c0392b; }
+    @media (max-width: 700px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script is:inline>
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button');
+      const status = document.getElementById('form-status');
+      const data = Object.fromEntries(new FormData(form));
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.textContent = '';
+      status.className = 'form-status';
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          status.textContent = 'Thank you! Your message has been sent.';
+          status.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error();
+        }
+      } catch {
+        status.textContent = 'Something went wrong. Please try again.';
+        status.classList.add('error');
+      }
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    });
+  </script>
+
   <style>
     .slideshow {
       position: relative;
