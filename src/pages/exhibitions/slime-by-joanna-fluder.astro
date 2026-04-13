@@ -30,7 +30,7 @@ const photos = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
     </div>
 
     <!-- Publication -->
-    <div style="margin-top: 3rem; display: grid; grid-template-columns: 300px 1fr; gap: 2rem; align-items: start;">
+    <div class="publication-section">
       <div>
         <img src="/images/exhibitions/slime-by-joanna-fluder/22.jpg" alt="Slime publication" loading="lazy" style="width:100%; border-radius: 4px; cursor: pointer;" onclick="openLightbox(21)" />
       </div>
@@ -57,9 +57,17 @@ const photos = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
     .ex-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
     .thumb { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
     .thumb:hover { opacity: 0.8; }
+    .publication-section {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
     @media (max-width: 700px) {
       .ex-layout { grid-template-columns: 1fr; }
       .ex-thumbs { grid-template-columns: 1fr 1fr 1fr; }
+      .publication-section { grid-template-columns: 1fr; }
     }
     #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
     #lightbox.active { display: flex; }
