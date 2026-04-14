@@ -284,6 +284,9 @@ h4 { font-size: 22px; font-weight: 700; }
   line-height: 1.8;
   margin-bottom: 0.3rem;
 }
+.ex-text {
+  padding-left: 2rem;
+}
 @media (max-width: 768px) {
   .ex-text {
     padding: 0 0.5rem;
