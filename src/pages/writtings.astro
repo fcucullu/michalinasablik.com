@@ -1,35 +1,61 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Writtings — Michalina Sablik">
+<Base title="Writings — Michalina Sablik">
   <div class="container page-content">
-    <h1>Writtings</h1>
+    <h1>Writings</h1>
 
-    <div style="margin-top: 2rem;">
-      <div class="writing-item">
-        <img src="/images/writings/writing-1.png" alt="Lurking — Laureta Hajrullahu" loading="lazy"
-          style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;" />
-        <h3>Lurking, Aesthetic of Withdrawal and Y2K. On Laureta Hajrullahu's Practice</h3>
-        <p class="writing-meta">Curatorial text — "to undo, to crumble, to vanish" by Laureta Hajrullahu, National Gallery of Kosovo, Pristina — March 11 – May 14, 2026</p>
-        <p>An examination of Hajrullahu's video-based practice and immersive installations drawing on digital folklore and online identity, addressing privacy, gender, and postdigital futures.</p>
-        <a href="https://michalinasablik.com/exhibitions/text-laureta/" target="_blank" style="display:inline-block;margin-top:0.8rem;font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;">Read More →</a>
+    <!-- Essays in artist catalogues -->
+    <h2 class="writings-category">Essays in Artist Catalogues</h2>
+    <div class="writings-mosaic">
+      <a href="/writings/si-on-brainrot" class="mosaic-tile mosaic-large">
+        <img src="/images/writings/writing-2.jpg" alt="Brainrot — Si On" loading="lazy" />
+        <div class="mosaic-overlay">
+          <span class="mosaic-tag">Catalogue Essay</span>
+          <h3>Brainrot: Affect and Feminist Strategies in Si On's Work</h3>
+          <p>Si On, Bunkier Sztuki, Kraków 2026</p>
+        </div>
+      </a>
+      <a href="https://michalinasablik.com/exhibitions/text-laureta/" class="mosaic-tile mosaic-medium">
+        <img src="/images/writings/writing-1.png" alt="Lurking — Laureta Hajrullahu" loading="lazy" />
+        <div class="mosaic-overlay">
+          <span class="mosaic-tag">Curatorial Text</span>
+          <h3>Lurking, Aesthetic of Withdrawal and Y2K</h3>
+          <p>Laureta Hajrullahu, National Gallery of Kosovo, Pristina 2026</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- My books -->
+    <h2 class="writings-category">My Books</h2>
+    <div class="writings-mosaic">
+      <a href="https://michalinasablik.com/exhibitions/text-raczynska/" class="mosaic-tile mosaic-medium">
+        <img src="/images/writings/writing-3.jpg" alt="Hay — Anna Raczyńska" loading="lazy" />
+        <div class="mosaic-overlay">
+          <span class="mosaic-tag">Solo Publication</span>
+          <h3>Hay. The Phantasmagorical Work of Anna Raczyńska</h3>
+          <p>Old Habits, New Beginnings — dual-language, 200+ pages</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Articles (placeholder) -->
+    <h2 class="writings-category">Articles</h2>
+    <div class="writings-mosaic">
+      <div class="mosaic-tile mosaic-small mosaic-placeholder">
+        <div class="mosaic-overlay">
+          <p>Coming soon</p>
+        </div>
       </div>
+    </div>
 
-      <div class="writing-item">
-        <img src="/images/writings/writing-2.jpg" alt="Brainrot — Si On" loading="lazy"
-          style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;" />
-        <h3>Brainrot: Affect and Feminist Strategies in Si On's Art</h3>
-        <p class="writing-meta">Catalogue text — Solo show by Si On at Bunkier Sztuki, Kraków — April 2026</p>
-        <p>An analysis of Si On's work through feminist and affect theory lenses.</p>
-      </div>
-
-      <div class="writing-item">
-        <img src="/images/writings/writing-3.jpg" alt="Hay — Anna Raczyńska" loading="lazy"
-          style="width:100%;max-height:400px;object-fit:cover;margin-bottom:1rem;" />
-        <h3>Hay. The Phantasmagorical Work of Anna Raczyńska</h3>
-        <p class="writing-meta">Solo publication — "Old Habits, New Beginnings" — 200+ page dual-language (Polish–German) with English section</p>
-        <p>A publication featuring essays by Michalina Sablik and Sophia Scherer, with design by Karolina Pierzyk and Tobias Wenig. Contains 178 photographs documenting 10 years of transdisciplinary practice across Europe.</p>
-        <a href="https://michalinasablik.com/exhibitions/text-raczynska/" target="_blank" style="display:inline-block;margin-top:0.8rem;font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;">Read More →</a>
+    <!-- Academic texts (placeholder) -->
+    <h2 class="writings-category">Academic Texts</h2>
+    <div class="writings-mosaic">
+      <div class="mosaic-tile mosaic-small mosaic-placeholder">
+        <div class="mosaic-overlay">
+          <p>Coming soon</p>
+        </div>
       </div>
     </div>
   </div>
