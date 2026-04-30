@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
-const photos = [1, 2, 3, 4, 5];
+const newPhotos = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+const oldPhotos = [1, 2, 3, 4, 5];
+const photos = [...newPhotos, ...oldPhotos];
 ---
 <Base title="Other Tomorrows — Michalina Sablik">
   <div class="container page-content">
@@ -21,6 +23,7 @@ const photos = [1, 2, 3, 4, 5];
           <p><strong>Artists:</strong> Katarzyna Depta-Garapich, Robert Gabris, Marie Lukáčová, Tala Madani, Sara Sadik, Natasha Tontey, Liliana Zeic</p>
           <p><strong>Coordinator:</strong> Jagna Lewandowska</p>
           <p><strong>Producer:</strong> Aleksandra Fudalej</p>
+          <p><strong>Photography:</strong> Szymon Sokołowski</p>
         </div>
       </div>
       <div class="ex-thumbs">
