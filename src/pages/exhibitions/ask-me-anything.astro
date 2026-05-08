@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+const photos = [1];
+---
+<Base title="Ask me anything. Justyna Górowska — Michalina Sablik">
+  <div class="container page-content">
+    <div class="ex-layout">
+      <div class="ex-text">
+        <h1>Ask me anything</h1>
+        <p class="exhibition-detail-venue">RARO On-Site Projects | Barcelona | 2026</p>
+        <div class="exhibition-detail-credits">
+          <p><strong>Artist:</strong> Justyna Górowska</p>
+          <p><strong>Curator:</strong> Michalina Sablik</p>
+          <p><strong>Venue:</strong> RARO On-Site Projects, Barcelona</p>
+        </div>
+      </div>
+      <div class="ex-thumbs">
+        {photos.map((n) => (
+          <img src={`/images/exhibitions/ask-me-anything/${n}.jpg`} alt="Exhibition view" loading="lazy" class="thumb" data-index={n - 1} onclick="openLightbox(this.dataset.index)" />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lb-close" onclick="closeLightbox()">&times;</button>
+    <button class="lb-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <img id="lb-img" src="" alt="Exhibition view" />
+    <button class="lb-next" onclick="navLightbox(1)">&#8250;</button>
+  </div>
+
+  <style>
+    .ex-layout { display: grid; grid-template-columns: 1fr 280px; gap: 2.5rem; align-items: start; }
+    .ex-thumbs { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+    .thumb { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
+    .thumb:hover { opacity: 0.8; }
+    @media (max-width: 700px) { .ex-layout { grid-template-columns: 1fr; } .ex-thumbs { grid-template-columns: 1fr 1fr 1fr; } }
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
+    #lightbox.active { display: flex; }
+    #lb-img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+    .lb-close, .lb-prev, .lb-next { position: absolute; background: none; border: none; color: #fff; font-size: 2.5rem; cursor: pointer; z-index: 10000; }
+    .lb-close { top: 1rem; right: 1.5rem; }
+    .lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+  </style>
+
+  <script is:inline>
+    const lbPhotos = ["/images/exhibitions/ask-me-anything/1.jpg"];
+    let lbCurrent = 0;
+    function openLightbox(i) { lbCurrent = +i; document.getElementById('lb-img').src = lbPhotos[lbCurrent]; document.getElementById('lightbox').classList.add('active'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+    function navLightbox(d) { lbCurrent = (lbCurrent + d + lbPhotos.length) % lbPhotos.length; document.getElementById('lb-img').src = lbPhotos[lbCurrent]; }
+    window.openLightbox = openLightbox; window.closeLightbox = closeLightbox; window.navLightbox = navLightbox;
+  </script>
+</Base>
