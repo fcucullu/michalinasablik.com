@@ -36,12 +36,22 @@ const exhibitions = [
   { title: "Snake-Man", venue: "Jak zapomnieć | Kraków", year: "2019", slug: "snake-man" },
   { title: "Apetite", venue: "Warsaw", year: "2018", slug: "apetite" },
 ];
+
+// Distinct years (newest first) for the year filter, like the News page.
+// A "2025–2026" range contributes to BOTH years.
+const years = [...new Set(exhibitions.flatMap((e) => e.year.match(/\d{4}/g) ?? []))].sort((a, b) => b.localeCompare(a));
+const defaultYear = years[0];
 ---
 <Base title="Exhibitions — Michalina Sablik">
   <div class="container page-content">
-    <div class="exhibition-list" style="margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+    <div class="year-tabs" style="display: flex; gap: 1rem; margin-bottom: 0.5rem; margin-top: 2rem; flex-wrap: wrap;">
+      {years.map((y) => (
+        <button class={`year-tab${y === defaultYear ? " active" : ""}`} data-year={y}>{y}</button>
+      ))}
+    </div>
+    <div class="exhibition-list" style="margin-top: 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
       {exhibitions.map((ex, i) => (
-        <div class="exhibition-entry" style="margin-bottom: 0;">
+        <div class={`exhibition-entry${ex.year.includes(defaultYear) ? " visible" : ""}`} data-year={ex.year} style="margin-bottom: 0;">
           {ex.slug ? (
             <a href={`/exhibitions/${ex.slug}/`}>
               <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
@@ -68,6 +78,30 @@ const exhibitions = [
     </div>
   </div>
   <style>
+    .year-tabs {
+      border-bottom: 1px solid #333;
+      padding-bottom: 0;
+    }
+    .year-tab {
+      background: none;
+      border: none;
+      color: #999;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: inherit;
+    }
+    .year-tab:hover { color: #000; }
+    .year-tab.active {
+      color: #000;
+      font-weight: 700;
+      border-bottom-color: #000;
+    }
+    .exhibition-entry[data-year] { display: none; }
+    .exhibition-entry.visible { display: block; }
     .exhibition-item {
       margin-top: 0.6rem;
     }
@@ -90,4 +124,28 @@ const exhibitions = [
       .exhibition-list { grid-template-columns: 1fr !important; }
     }
   </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const yearTabs = document.querySelectorAll('.year-tab');
+      const entries = document.querySelectorAll('.exhibition-entry[data-year]');
+      let activeYear = yearTabs.length ? yearTabs[0].getAttribute('data-year') : '';
+      function filterEntries() {
+        entries.forEach((el) => {
+          const y = el.getAttribute('data-year') || '';
+          if (activeYear && y.includes(activeYear)) el.classList.add('visible');
+          else el.classList.remove('visible');
+        });
+      }
+      yearTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          activeYear = tab.getAttribute('data-year');
+          yearTabs.forEach((t) => t.classList.remove('active'));
+          tab.classList.add('active');
+          filterEntries();
+        });
+      });
+      filterEntries();
+    });
+  </script>
 </Base>
