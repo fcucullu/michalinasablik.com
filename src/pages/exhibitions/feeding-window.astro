@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+const photos = [1, 2];
+---
+<Base title="Feeding Window. Dawid Dzwonkowski — Michalina Sablik">
+  <div class="container page-content">
+    <div class="ex-layout">
+      <div class="ex-text">
+        <h1>Feeding Window. Dawid Dzwonkowski</h1>
+        <p class="exhibition-detail-venue">Podgląd A-Z, ING Polish Art Foundation | Warsaw | 2026</p>
+        <div class="exhibition-detail-body">
+          <p>In 2025, the United States Department of Agriculture (USDA) determined that the appropriate daily protein intake for an adult is around 90 grams, thereby overturning the traditional food pyramid that had been in force for years. The debate about diet, nutrients, and food products has become a permanent feature of the culture wars and identity politics. The popularity of high-protein diets has not coincidentally aligned with a conservative turn promoting "traditional" values: a rigid division of social roles, anti-veganism, and a biblical hierarchy of species. Within these ideologies, dairy and meat become symbols of vital strength and cultural superiority. Consuming them is part of both the cult of the athletic body and the late-capitalist model of consumerism focused on optimizing the individual.</p>
+          <p>In the site-specific installation <em>Feeding Window</em>, Dawid Dzwonkowski gathers various kinds of dairy products and their plant-based substitutes. He places them, intermingled, within the sterile, isolated space of the building's glass pane, reminiscent of laboratory glassware. Matter itself becomes a co-author of the installation — milk and milk-like substances that, throughout the exhibition, ferment, condense, and separate into layers, creating unpredictable forms and records of their own transformation. A detailed breakdown of the composition of the substances used remains an integral part of the work. At the same time, the artist intervenes in the architecture of an ultra-modern commercial centre in the heart of the metropolis, disrupting its sterility and symbolic transparency. In doing so, he exposes the repressed underside of contemporary consumption: the dystopian reality of industrial animal farming, the mechanized production of milk and meat, the calculated extraction of animal bodies, and the invisible reproductive labour that sustains these systems.</p>
+          <p>His engagement with the theme of cattle farming also stems from the artist's biography, having grown up as a queer person in the Polish countryside. In his installations and performances, Dzwonkowski frequently reaches for substances that are at once meaningful and abject — milk, cow dung, or gelatine. He presents milk as a deeply political substance, whose use has for centuries been bound up with ideologies justifying human domination over other species and the exploitation of animal bodies. His reflection aligns with so-called critical milk theory, within which scholars from the fields of decolonial thought and new feminist materialism analyse milk as a tool of imperial and colonial politics. The artist's aim is neither eco-activism nor the moralizing of individual consumers. Through his close work with matter, he draws attention to the invisibility and the "whiteness" of the systems we inhabit — systems founded on the exploitation of animals, a colonial attitude toward nature, and the hierarchies embedded in modern models of production and consumption.</p>
+        </div>
+        <div class="exhibition-detail-credits">
+          <p><strong>Opening:</strong> June 23, 2026, 6:00 PM</p>
+          <p><strong>Artist:</strong> Dawid Dzwonkowski</p>
+          <p><strong>Curator:</strong> Michalina Sablik</p>
+          <p><strong>Venue:</strong> Podgląd A-Z, ING Polish Art Foundation, Warsaw</p>
+        </div>
+      </div>
+      <div class="ex-thumbs">
+        {photos.map((n) => (
+          <img src={`/images/exhibitions/feeding-window/${n}.jpg`} alt="Exhibition view" loading="lazy" class="thumb" data-index={n - 1} onclick="openLightbox(this.dataset.index)" />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lb-close" onclick="closeLightbox()">&times;</button>
+    <button class="lb-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <img id="lb-img" src="" alt="Exhibition view" />
+    <button class="lb-next" onclick="navLightbox(1)">&#8250;</button>
+  </div>
+
+  <style>
+    .ex-layout { display: grid; grid-template-columns: 1fr 280px; gap: 2.5rem; align-items: start; }
+    .ex-thumbs { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+    .thumb { width: 100%; height: auto; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
+    .thumb:hover { opacity: 0.8; }
+    @media (max-width: 700px) { .ex-layout { grid-template-columns: 1fr; } .ex-thumbs { grid-template-columns: 1fr 1fr 1fr; } }
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
+    #lightbox.active { display: flex; }
+    #lb-img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+    .lb-close, .lb-prev, .lb-next { position: absolute; background: none; border: none; color: #fff; font-size: 2.5rem; cursor: pointer; z-index: 10000; }
+    .lb-close { top: 1rem; right: 1.5rem; }
+    .lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+  </style>
+
+  <script is:inline>
+    const lbPhotos = ["/images/exhibitions/feeding-window/1.jpg", "/images/exhibitions/feeding-window/2.jpg"];
+    let lbCurrent = 0;
+    function openLightbox(i) { lbCurrent = +i; document.getElementById('lb-img').src = lbPhotos[lbCurrent]; document.getElementById('lightbox').classList.add('active'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+    function navLightbox(d) { lbCurrent = (lbCurrent + d + lbPhotos.length) % lbPhotos.length; document.getElementById('lb-img').src = lbPhotos[lbCurrent]; }
+    window.openLightbox = openLightbox; window.closeLightbox = closeLightbox; window.navLightbox = navLightbox;
+  </script>
+</Base>
