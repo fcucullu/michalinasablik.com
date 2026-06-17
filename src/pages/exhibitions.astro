@@ -1,41 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const exhibitions = [
-  { title: "Feeding Window. Dawid Dzwonkowski", venue: "Podgląd A-Z, ING Polish Art Foundation | Warsaw", year: "2026", slug: "feeding-window" },
-  { title: "Jura Shust: Żywica*Solar Plexus", venue: "Zachęta National Gallery of Art | Warsaw", year: "2026", slug: "jura-shust" },
-  { title: "Samuel Kłoda: Creak, Crash and Crow", venue: "UFO Gallery | Kraków", year: "2026", slug: "samuel-kloda" },
-  { title: "Ask me anything. WetMeWild. Justyna Górowska", venue: "RARO On-Site Projects | Barcelona", year: "2026", slug: "ask-me-anything" },
-  { title: "Permitted Vulnerability. Gvantsa Jishkariani", venue: "Espai Souvenir | Barcelona", year: "2026", slug: "permitted-vulnerability" },
-  { title: "to undo, to crumble, to vanish. Laureta Hajrullahu", venue: "National Gallery of Kosovo QAFA | Pristina", year: "2026", slug: "text-laureta" },
-  { title: "Other Tomorrows / City of Women", venue: "Museum of Modern Art | Warsaw", year: "2025–2026", slug: "other-tomorrows" },
-  { title: "A View of One's Own by Paulina Stasik", venue: "BWA | Tarnów", year: "2025", slug: "paulina-stasik" },
-  { title: "Slime by Joanna Fluder", venue: "Zachęta National Gallery | Warsaw", year: "2025", slug: "slime-by-joanna-fluder" },
-  { title: "Soft Smiths. Contemporary Women's* Metalwork", venue: "Center of Polish Sculpture | Orońsko", year: "2025", slug: "soft-smiths" },
-  { title: "Hyperlocality. Personal Cartographies", venue: "CasCaDas ArtSpace | Barcelona", year: "2025", slug: "hyperlocality" },
-  { title: "Mammals&Suckers", venue: "HOS Gallery | Warsaw", year: "2025", slug: "mammalssuckers" },
-  { title: "Justyna Smoleń: Fragile Dreams", venue: "Bunkier Sztuki | Kraków", year: "2025", slug: "fragile-dreams" },
-  { title: "A Man Eating His Own Tail", venue: "CasCaDas ArtSpace | Barcelona", year: "2024", slug: "a-man-eating-his-own-tail" },
-  { title: "We Are a Dream", venue: "Kunsthalle.Ost | Leipzig", year: "2024", slug: "we-are-a-dream" },
-  { title: "From The Ashes", venue: "Zachęta National Gallery | Warsaw", year: "2024", slug: "from-the-ashes" },
-  { title: "Apparently Small Significance of Puddles", venue: "Art Walk Gallery", year: "2023", slug: "exhibition-1" },
-  { title: "Hit Me With Your Car", venue: "Galeria Promocyjna | Warsaw", year: "2023", slug: "hit-me-with-your-car" },
-  { title: "I Stand in Front of the Mirror Like Dog and Paint", venue: "HOS Gallery | Warsaw", year: "2023", slug: "maja-krysiak" },
-  { title: "Skin Deep", venue: "KRAKERS | Kraków", year: "2023", slug: "skin-deep" },
-  { title: "And Rivers Will Flow with Date Syrup", venue: "Galeria Promocyjna | Warsaw", year: "2023", slug: "ania-grzymala" },
-  { title: "Quench Thirst with Dew", venue: "UFO Art Gallery | Kraków", year: "2023", slug: "quench-thirst-with-dew" },
-  { title: "Cold Lips of the Waves", venue: "Gdańska Galeria Miejska | Gdańsk", year: "2022", slug: "cold-lips-of-waves" },
-  { title: "Room of Projected Horizons", venue: "Galeria Promocyjna | Warsaw", year: "2022", slug: "room-of-projected-horizons" },
-  { title: "In these days of tumult, heat and dazzle…", venue: "Stefan Gierowski's Foundation | Warsaw", year: "2021", slug: "in-these-days-of-tumult-heat-and-dazzle" },
-  { title: "Pure Crystal", venue: "Galeria Promocyjna | Warsaw", year: "2021", slug: "czysty-krysztal" },
-  { title: "Warsaw Preview", venue: "Jazdów | Warsaw", year: "2021", slug: "warsaw-preview" },
-  { title: "Year on the Protests", venue: "Krakow Photomonth | Kraków", year: "2021", slug: "year-on-protest" },
-  { title: "A Dream Within a Dream", venue: "Magic Garden | Warsaw", year: "2020", slug: "sen-we-snie" },
-  { title: "Beautiful Losers", venue: "Jak zapomnieć | Kraków", year: "2020", slug: "beautiful-loosers" },
-  { title: "Poland of Our Dreams", venue: "Warsaw", year: "2019", slug: "poland-of-our-dreams" },
-  { title: "Snake-Man", venue: "Jak zapomnieć | Kraków", year: "2019", slug: "snake-man" },
-  { title: "Apetite", venue: "Warsaw", year: "2018", slug: "apetite" },
-];
+import { exhibitions } from '../data/exhibitions.js';
 
 // Distinct years (newest first) for the year filter, like the News page.
 // A "2025–2026" range contributes to BOTH years.
@@ -50,16 +15,16 @@ const defaultYear = years[0];
       ))}
     </div>
     <div class="exhibition-list" style="margin-top: 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-      {exhibitions.map((ex, i) => (
+      {exhibitions.map((ex) => (
         <div class={`exhibition-entry${ex.year.includes(defaultYear) ? " visible" : ""}`} data-year={ex.year} style="margin-bottom: 0;">
           {ex.slug ? (
             <a href={`/exhibitions/${ex.slug}/`}>
-              <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
+              <img src={`/images/exhibitions/ex-${ex.imgIndex}.jpg`} alt={ex.title} loading="lazy"
                 style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
                 onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
             </a>
           ) : (
-            <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
+            <img src={`/images/exhibitions/ex-${ex.imgIndex}.jpg`} alt={ex.title} loading="lazy"
               style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
               onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
           )}
@@ -72,6 +37,9 @@ const defaultYear = years[0];
               )}
             </div>
             <div class="exhibition-venue">{ex.venue} | {ex.year}</div>
+            {ex.tags?.includes("Dzidy") && (
+              <a href="/exhibitions/dzidy/" class="exhibition-tag">DZIDY</a>
+            )}
           </div>
         </div>
       ))}
@@ -116,6 +84,21 @@ const defaultYear = years[0];
       font-size: 0.8rem;
       color: #888;
       line-height: 1.3;
+    }
+    .exhibition-tag {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: #888;
+      border: 1px solid #ccc;
+      padding: 0.1rem 0.5rem;
+      border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .exhibition-tag:hover {
+      color: #000;
+      border-color: #000;
     }
     @media (max-width: 900px) {
       .exhibition-list { grid-template-columns: repeat(2, 1fr) !important; }
