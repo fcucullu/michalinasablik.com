@@ -1,10 +1,28 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
 const SITE_URL = 'https://michalinasablik.com';
-const { title = 'Michalina Sablik' } = Astro.props;
-const description = 'Michalina Sablik — Art historian, curator of exhibitions and public programs';
+const {
+  title = 'Michalina Sablik — Curator of Contemporary Art',
+  description = 'Michalina Sablik — art historian and independent curator of contemporary art (kuratorka sztuki współczesnej). Exhibitions, public programs and critical writing across Warsaw and beyond.',
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
 const socialImage = new URL('/images/og-image.jpg', SITE_URL).href;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Michalina Sablik',
+  url: SITE_URL,
+  image: socialImage,
+  jobTitle: 'Curator of Contemporary Art',
+  description: 'Art historian and independent curator of contemporary art (kuratorka sztuki współczesnej) — exhibitions, public programs and critical writing.',
+  knowsAbout: ['Contemporary art', 'Sztuka współczesna', 'Curating', 'Art history', 'Exhibition making', 'Public programs', 'Art writing'],
+  sameAs: [
+    'https://www.instagram.com/miska_sablik/',
+    'https://www.linkedin.com/in/michalina-sablik-3a35a161/',
+  ],
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +30,11 @@ const socialImage = new URL('/images/og-image.jpg', SITE_URL).href;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content={description}>
+  <meta name="keywords" content="Michalina Sablik, kuratorka sztuki współczesnej, curator of contemporary art, contemporary art curator, art historian, exhibitions Warsaw, public programs, sztuka współczesna">
+  <meta name="author" content="Michalina Sablik">
   <title>{title}</title>
   <link rel="canonical" href={canonicalURL}>
+  <meta name="robots" content="index, follow">
   <link rel="icon" type="image/png" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/favicon-180.png">
   <meta property="og:type" content="website">
@@ -29,6 +50,7 @@ const socialImage = new URL('/images/og-image.jpg', SITE_URL).href;
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={socialImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 </head>
 <body>
   <header class="site-header">
@@ -46,6 +68,9 @@ const socialImage = new URL('/images/og-image.jpg', SITE_URL).href;
   <main>
     <slot />
   </main>
+
+  <Analytics />
+
 
   <footer class="site-footer">
     <div class="container">

@@ -8,7 +8,10 @@ const slides = [
   { image: "/images/exhibitions/jura-shust/1.jpg", mobileImage: "/images/exhibitions/jura-shust/mobile.jpg", title: "Jura Shust: Żywica*Solar Plexus", subtitle: "Zachęta National Gallery of Art, Warsaw | Opening: July 16, 2026", link: "/exhibitions/jura-shust/", type: "exhibition" },
 ];
 ---
-<Base title="Michalina Sablik — Art Curator">
+<Base
+  title="Michalina Sablik — Curator of Contemporary Art"
+  description="Michalina Sablik is an art historian and independent curator of contemporary art (kuratorka sztuki współczesnej) based in Warsaw — curating exhibitions, public programs and critical texts, with mentoring for artists and consulting for institutions."
+>
   <div class="slideshow">
     {slides.map((slide, i) => (
       <div class={`slide ${i === 0 ? 'active' : ''}`} data-index={i}>

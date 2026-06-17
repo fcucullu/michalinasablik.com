@@ -42,7 +42,10 @@ const exhibitions = [
 const years = [...new Set(exhibitions.flatMap((e) => e.year.match(/\d{4}/g) ?? []))].sort((a, b) => b.localeCompare(a));
 const defaultYear = years[0];
 ---
-<Base title="Exhibitions — Michalina Sablik">
+<Base
+  title="Exhibitions — Michalina Sablik, Curator of Contemporary Art"
+  description="Exhibitions curated by Michalina Sablik — contemporary art shows, solo and group projects across galleries and institutions in Warsaw, Poland and abroad."
+>
   <div class="container page-content">
     <div class="year-tabs" style="display: flex; gap: 1rem; margin-bottom: 0.5rem; margin-top: 2rem; flex-wrap: wrap;">
       {years.map((y) => (
