@@ -1,4 +1,4 @@
-import sharp from '/Users/franciscocucullu/Desktop/franciscocucullu.com/node_modules/sharp/lib/index.js';
+import sharp from '../../franciscocucullu.com/node_modules/sharp/lib/index.js';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
