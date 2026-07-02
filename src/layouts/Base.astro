@@ -87,5 +87,103 @@ const personSchema = {
       </div>
     </div>
   </footer>
+
+  <!-- Newsletter popup -->
+  <div id="nl-popup" class="nl-popup" hidden>
+    <div class="nl-popup__backdrop" data-nl-close></div>
+    <div class="nl-popup__card" role="dialog" aria-modal="true" aria-labelledby="nl-title">
+      <button class="nl-popup__x" data-nl-close aria-label="Close">&times;</button>
+      <h3 id="nl-title" class="nl-popup__title">Newsletter</h3>
+      <p class="nl-popup__text">Sign up for occasional updates on exhibitions, texts and events.</p>
+      <form id="nl-form" class="nl-popup__form">
+        <input type="email" name="email" placeholder="Your email" required autocomplete="email" />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p id="nl-status" class="nl-popup__status" role="status"></p>
+    </div>
+  </div>
+
+  <style>
+    .nl-popup { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; }
+    .nl-popup[hidden] { display: none; }
+    .nl-popup__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    .nl-popup__card {
+      position: relative; background: #fff; max-width: 420px; width: calc(100% - 2.5rem);
+      padding: 2.5rem 2rem 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      font-family: var(--font); animation: nlIn 0.3s ease;
+    }
+    @keyframes nlIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .nl-popup__x {
+      position: absolute; top: 0.5rem; right: 0.75rem; background: none; border: none;
+      font-size: 1.6rem; line-height: 1; cursor: pointer; color: #999;
+    }
+    .nl-popup__x:hover { color: #000; }
+    .nl-popup__title { font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 0.6rem; }
+    .nl-popup__text { font-size: 0.95rem; font-weight: 300; line-height: 1.5; color: #555; margin: 0 0 1.25rem; }
+    .nl-popup__form input {
+      width: 100%; padding: 0.75rem 1rem; border: 1px solid #ddd; background: #fafafa;
+      font-family: var(--font); font-size: 0.95rem; font-weight: 300; margin-bottom: 0.75rem;
+    }
+    .nl-popup__form input:focus { outline: none; border-color: #000; }
+    .nl-popup__form button {
+      width: 100%; padding: 0.8rem; background: #000; color: #fff; border: none;
+      font-family: var(--font); font-size: 0.95rem; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 1px; cursor: pointer; transition: opacity 0.2s;
+    }
+    .nl-popup__form button:hover { opacity: 0.85; }
+    .nl-popup__form button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .nl-popup__status { text-align: center; margin: 0.75rem 0 0; font-size: 0.85rem; font-weight: 300; min-height: 1.2em; }
+    .nl-popup__status.ok { color: #2d7a3a; }
+    .nl-popup__status.err { color: #c0392b; }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var KEY = 'nl_popup_seen_v1';
+      var DAYS = 30;
+      function recentlySeen() {
+        try {
+          var v = localStorage.getItem(KEY);
+          if (!v) return false;
+          if (v === 'subscribed') return true;
+          return (Date.now() - parseInt(v, 10)) < DAYS * 86400000;
+        } catch (e) { return false; }
+      }
+      function mark(val) { try { localStorage.setItem(KEY, val || String(Date.now())); } catch (e) {} }
+      if (recentlySeen()) return;
+      var popup = document.getElementById('nl-popup');
+      if (!popup) return;
+      var body = document.body;
+      function open() { popup.hidden = false; body.style.overflow = 'hidden'; }
+      function close() { popup.hidden = true; body.style.overflow = ''; if (localStorage.getItem(KEY) !== 'subscribed') mark(); }
+      var timer = setTimeout(open, 6000);
+      popup.querySelectorAll('[data-nl-close]').forEach(function (el) { el.addEventListener('click', close); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !popup.hidden) close(); });
+      var form = document.getElementById('nl-form');
+      var status = document.getElementById('nl-status');
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var email = form.email.value.trim();
+        var btn = form.querySelector('button');
+        btn.disabled = true; status.textContent = ''; status.className = 'nl-popup__status';
+        try {
+          var res = await fetch('/api/subscribe', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email })
+          });
+          if (res.ok) {
+            status.textContent = 'Thank you! You are subscribed.'; status.classList.add('ok');
+            form.reset(); mark('subscribed'); setTimeout(close, 2000);
+          } else {
+            var d = await res.json().catch(function () { return {}; });
+            status.textContent = d.error || 'Something went wrong. Please try again.';
+            status.classList.add('err'); btn.disabled = false;
+          }
+        } catch (err) {
+          status.textContent = 'Network error. Please try again.'; status.classList.add('err'); btn.disabled = false;
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
