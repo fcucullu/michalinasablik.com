@@ -32,6 +32,7 @@ import Base from '../layouts/Base.astro';
         </div>
         <div class="about-photo">
           <img src="/images/about-portrait.jpg" alt="Michalina Sablik" />
+          <p class="photo-credit">photo: Joanna Wierzbicka</p>
         </div>
       </div>
     </div>
@@ -56,6 +57,13 @@ import Base from '../layouts/Base.astro';
       width: 100%;
       border-radius: 0;
       display: block;
+    }
+    .photo-credit {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: #888;
+      text-align: right;
     }
     @media (max-width: 700px) {
       .about-layout {
