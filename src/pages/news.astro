@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 
 const news = [
   { title: "Jura Shust: Żywica*Solar Plexus", img: "/images/news/jura-shust.jpg", details: "Warsaw: Zachęta – National Gallery of Art | July 17 – September 27, 2026 | Opening: July 16, 7:00 PM", text: "I'm delighted to invite you to Jura Shust's Żywica*Solar Plexus at Zachęta — National Gallery of Art in Warsaw, the Belarusian artist's first solo exhibition in Poland, which I curated. Across five rooms, videos, sound, performative actions, and organic and industrial objects trace a path from Christmas tree plantations to ancient woodlands, asking how technology has taken over roles once held by rituals and spiritual practices. The opening is on Thursday, July 16 at 7:00 PM, with the group performance Birds with Human Heads.", link: "/exhibitions/jura-shust/", year: 2026, tags: ["Exhibition"] },
+  { title: "The Art of the Garden, the Art of the Earth: Meg Webster", img: "/images/news/meg-webster.jpg", text: "New text out on Moodaily from Mood Scent Bar! This time on Meg Webster, an American pioneer of ecological and land art. Since the 1980s she has worked with living, natural matter — earth, moss, salt, plants and water — making gardens and installations in which the soil and its growth become the artwork itself.", link: "", year: 2026, tags: ["Publication"] },
   { title: "Feeding Window. Dawid Dzwonkowski", img: "/images/news/feeding-window.jpg", details: "Warsaw: ING Polish Art Foundation | Opening: June 23, 2026, 6:00 PM", text: "Part of the ING Polish Art Foundation's Artysta–Zawodowiec program, Feeding Window is a site-specific protein installation by Dawid Dzwonkowski. Entering into dialogue with the architecture of the shopping centre, it comments on the late-capitalist model of consumerism centred on optimising the individual, and on the colonial attitude toward non-human animals.", link: "/exhibitions/feeding-window/", year: 2026, tags: ["Exhibition"] },
   { title: "New Generation vs the Old Rules of the Art World", img: "/images/news/news-art-monitor-nowe-pokolenie.jpg", text: "My new article is out in the latest issue of Art Monitor, on how a young generation is challenging and rewriting the established rules of the art world. Illustration by Rafał Kwiczor.", link: "", year: 2026, tags: ["Publication"] },
   { title: "Samuel Kłoda: Creak, Crash and Crow", details: "Kraków: UFO Gallery | Opening: June 12, 2026", text: "This week I'm flying to Kraków for the opening of \"End, Crash and Crow\", an exhibition by Samuel Kłoda, a remarkably talented artist whose work engages with and reconsiders major painting traditions.\nIn his latest series of paintings, situated at the threshold of abstract expressionism, the atmosphere thickens, melts, and solidifies. Samuel Kłoda works with this sense of tremor and instability. Through richly colored compositions and dense textures, he seeks to capture the palpable atmosphere of political and social anxiety and the destabilization of established orders. Yet he filters these tensions through his own sensibility and personal narratives.\nWe warmly invite you to join us for the opening on Friday at UFO Art Gallery.", link: "/exhibitions/samuel-kloda", year: 2026, tags: ["Exhibition"] },
@@ -86,11 +87,11 @@ const news = [
           <div class="news-image">
             {item.link ? (
               <a href={item.link} target="_blank" rel="noopener">
-                <img src={item.img ?? `/images/news/news-${i}.jpg`} alt={item.title} loading="lazy"
+                <img src={item.img ?? `/images/news/news-${i - 1}.jpg`} alt={item.title} loading="lazy"
                   onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
               </a>
             ) : (
-              <img src={item.img ?? `/images/news/news-${i}.jpg`} alt={item.title} loading="lazy"
+              <img src={item.img ?? `/images/news/news-${i - 1}.jpg`} alt={item.title} loading="lazy"
                 onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
             )}
           </div>
