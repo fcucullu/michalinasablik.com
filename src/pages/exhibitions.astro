@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 
 const exhibitions = [
   { title: "Feeding Window. Dawid Dzwonkowski", venue: "Podgląd A-Z, ING Polish Art Foundation | Warsaw", year: "2026", slug: "feeding-window" },
-  { title: "Jura Shust: Żywica*Solar Plexus", venue: "Zachęta National Gallery of Art | Warsaw", year: "2026", slug: "jura-shust" },
+  { title: "Jura Shust: Żywica*Solar Plexus", venue: "Zachęta National Gallery of Art | Warsaw", year: "2026", slug: "jura-shust", img: "/images/news/jura-shust.jpg" },
   { title: "Samuel Kłoda: Creak, Crash and Crow", venue: "UFO Gallery | Kraków", year: "2026", slug: "samuel-kloda" },
   { title: "Ask me anything. WetMeWild. Justyna Górowska", venue: "RARO On-Site Projects | Barcelona", year: "2026", slug: "ask-me-anything" },
   { title: "Permitted Vulnerability. Gvantsa Jishkariani", venue: "Espai Souvenir | Barcelona", year: "2026", slug: "permitted-vulnerability" },
@@ -57,12 +57,12 @@ const defaultYear = years[0];
         <div class={`exhibition-entry${ex.year.includes(defaultYear) ? " visible" : ""}`} data-year={ex.year} style="margin-bottom: 0;">
           {ex.slug ? (
             <a href={`/exhibitions/${ex.slug}/`}>
-              <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
+              <img src={ex.img ?? `/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
                 style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
                 onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
             </a>
           ) : (
-            <img src={`/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
+            <img src={ex.img ?? `/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
               style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
               onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
           )}
