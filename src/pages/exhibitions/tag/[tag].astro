@@ -1,18 +1,29 @@
 ---
-import Base from '../../layouts/Base.astro';
-import { exhibitions } from '../../data/exhibitions.js';
+import Base from '../../../layouts/Base.astro';
+import { exhibitions } from '../../../data/exhibitions.js';
+import { TAGS } from '../../../data/tags.js';
 
-const dzidyExhibitions = exhibitions.filter((e) => e.tags?.includes("Dzidy"));
+export function getStaticPaths() {
+  return Object.keys(TAGS).map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const info = TAGS[tag];
+const tagged = exhibitions.filter((e) => e.tags?.includes(tag));
 ---
-<Base title="DZIDY — Michalina Sablik">
+<Base title={`${info.title} — Michalina Sablik`}>
   <div class="container page-content">
     <div class="dzidy-layout">
     <aside class="dzidy-intro">
-      <h1>DZIDY</h1>
-      <p>The curatorial duo DZIDY, founded by Aleksandra Liput and Michalina Sablik, was active from 2018 to 2021 in Warsaw. Together they organized pop-up, group, site-specific exhibitions in unconventional spaces, inviting Polish and international artists of the young generation to collaborate. They were interested in contemporary issues related to politics, identity, gender, neo-tribalism, and post-internet aesthetics.</p>
+      <h1>{info.title}</h1>
+      {info.note ? (
+        <p>{info.note}</p>
+      ) : info.subtitle ? (
+        <p class="dzidy-subtitle">{info.subtitle}</p>
+      ) : null}
     </aside>
     <div class="exhibition-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
-      {dzidyExhibitions.map((ex) => (
+      {tagged.map((ex) => (
         <div class="exhibition-entry" style="margin-bottom: 0;">
           {ex.slug ? (
             <a href={`/exhibitions/${ex.slug}/`}>
@@ -61,6 +72,10 @@ const dzidyExhibitions = exhibitions.filter((e) => e.tags?.includes("Dzidy"));
       font-size: 1rem;
       line-height: 1.6;
       color: #444;
+    }
+    .dzidy-subtitle {
+      font-size: 0.9rem;
+      color: #888;
     }
     .exhibition-list {
       flex: 1;

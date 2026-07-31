@@ -1,13 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import { exhibitions } from '../data/exhibitions.js';
+import { TAGS } from '../data/tags.js';
 
 // Distinct years (newest first) for the year filter, like the News page.
 // A "2025–2026" range contributes to BOTH years.
 const years = [...new Set(exhibitions.flatMap((e) => e.year.match(/\d{4}/g) ?? []))].sort((a, b) => b.localeCompare(a));
 const defaultYear = years[0];
 ---
-<Base title="Exhibitions — Michalina Sablik">
+<Base
+  title="Exhibitions — Michalina Sablik, Curator of Contemporary Art"
+  description="Exhibitions curated by Michalina Sablik — contemporary art shows, solo and group projects across galleries and institutions in Warsaw, Poland and abroad."
+>
   <div class="container page-content">
     <div class="year-tabs" style="display: flex; gap: 1rem; margin-bottom: 0.5rem; margin-top: 2rem; flex-wrap: wrap;">
       {years.map((y) => (
@@ -37,8 +41,12 @@ const defaultYear = years[0];
               )}
             </div>
             <div class="exhibition-venue">{ex.venue} | {ex.year}</div>
-            {ex.tags?.includes("Dzidy") && (
-              <a href="/exhibitions/dzidy/" class="exhibition-tag">DZIDY</a>
+            {ex.tags?.length && (
+              <div class="exhibition-tags">
+                {ex.tags.filter((t) => TAGS[t]).map((t) => (
+                  <a href={`/exhibitions/tag/${t}/`} class="exhibition-tag">{TAGS[t].title}</a>
+                ))}
+              </div>
             )}
           </div>
         </div>
@@ -85,9 +93,14 @@ const defaultYear = years[0];
       color: #888;
       line-height: 1.3;
     }
+    .exhibition-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
     .exhibition-tag {
       display: inline-block;
-      margin-top: 0.4rem;
       font-size: 0.7rem;
       letter-spacing: 0.08em;
       color: #888;
