@@ -58,12 +58,12 @@ const defaultYear = years[0];
           {ex.slug ? (
             <a href={`/exhibitions/${ex.slug}/`}>
               <img src={ex.img ?? `/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
-                style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
+                style="width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:0.8rem;"
                 onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
             </a>
           ) : (
             <img src={ex.img ?? `/images/exhibitions/ex-${i + 1}.jpg`} alt={ex.title} loading="lazy"
-              style="width:100%;max-height:350px;object-fit:cover;margin-bottom:0.8rem;"
+              style="width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:0.8rem;"
               onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=null}" />
           )}
           <div class="exhibition-item">
