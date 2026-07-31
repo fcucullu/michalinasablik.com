@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-const photos = [1];
+const photos = [1, 2, 3, 4, 5, 6];
 ---
 <Base
   title="Samuel Kłoda: Creak, Crash and Crow — Michalina Sablik"
@@ -40,8 +40,8 @@ const photos = [1];
 
   <style>
     .ex-layout { display: grid; grid-template-columns: 1fr 280px; gap: 2.5rem; align-items: start; }
-    .ex-thumbs { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
-    .thumb { width: 100%; height: auto; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
+    .ex-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .thumb { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
     .thumb:hover { opacity: 0.8; }
     @media (max-width: 700px) { .ex-layout { grid-template-columns: 1fr; } .ex-thumbs { grid-template-columns: 1fr 1fr 1fr; } }
     #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
@@ -54,7 +54,7 @@ const photos = [1];
   </style>
 
   <script is:inline>
-    const lbPhotos = ["/images/exhibitions/samuel-kloda/1.jpg"];
+    const lbPhotos = ["/images/exhibitions/samuel-kloda/1.jpg", "/images/exhibitions/samuel-kloda/2.jpg", "/images/exhibitions/samuel-kloda/3.jpg", "/images/exhibitions/samuel-kloda/4.jpg", "/images/exhibitions/samuel-kloda/5.jpg", "/images/exhibitions/samuel-kloda/6.jpg"];
     let lbCurrent = 0;
     function openLightbox(i) { lbCurrent = +i; document.getElementById('lb-img').src = lbPhotos[lbCurrent]; document.getElementById('lightbox').classList.add('active'); }
     function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
