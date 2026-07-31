@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-const photos = [1, 2, 3, 4, 5, 6];
+const photos = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 ---
 <Base
   title="Samuel Kłoda: Creak, Crash and Crow — Michalina Sablik"
@@ -21,6 +21,7 @@ const photos = [1, 2, 3, 4, 5, 6];
           <p><strong>Artist:</strong> Samuel Kłoda</p>
           <p><strong>Curator:</strong> Michalina Sablik</p>
           <p><strong>Venue:</strong> UFO Gallery, Kraków</p>
+          <p><strong>Photographs:</strong> Szymon Sokołowski</p>
         </div>
       </div>
       <div class="ex-thumbs">
@@ -54,7 +55,7 @@ const photos = [1, 2, 3, 4, 5, 6];
   </style>
 
   <script is:inline>
-    const lbPhotos = ["/images/exhibitions/samuel-kloda/1.jpg", "/images/exhibitions/samuel-kloda/2.jpg", "/images/exhibitions/samuel-kloda/3.jpg", "/images/exhibitions/samuel-kloda/4.jpg", "/images/exhibitions/samuel-kloda/5.jpg", "/images/exhibitions/samuel-kloda/6.jpg"];
+    const lbPhotos = ["/images/exhibitions/samuel-kloda/1.jpg", "/images/exhibitions/samuel-kloda/2.jpg", "/images/exhibitions/samuel-kloda/3.jpg", "/images/exhibitions/samuel-kloda/4.jpg", "/images/exhibitions/samuel-kloda/5.jpg", "/images/exhibitions/samuel-kloda/6.jpg", "/images/exhibitions/samuel-kloda/7.jpg", "/images/exhibitions/samuel-kloda/8.jpg", "/images/exhibitions/samuel-kloda/9.jpg"];
     let lbCurrent = 0;
     function openLightbox(i) { lbCurrent = +i; document.getElementById('lb-img').src = lbPhotos[lbCurrent]; document.getElementById('lightbox').classList.add('active'); }
     function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }

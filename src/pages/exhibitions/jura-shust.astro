@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-const photos = [1, 2, 3, 4, 5, 6, 7];
+const photos = [1, 2, 3, 4, 5, 6];
 ---
 <Base
   title="Jura Shust: Żywica*Solar Plexus — Michalina Sablik"
@@ -25,6 +25,7 @@ const photos = [1, 2, 3, 4, 5, 6, 7];
           <p><strong>Curator:</strong> Michalina Sablik</p>
           <p><strong>Producer:</strong> Dominika Kaszewska, Karolina Jezierska-Pomorska</p>
           <p><strong>Venue:</strong> Zachęta National Gallery of Art, Warsaw</p>
+          <p><strong>Photographs:</strong> Bartosz Górka</p>
           <p><strong>Special thanks:</strong> Management, New York; Michael Reznik; Robert Triefus</p>
         </div>
       </div>
@@ -60,7 +61,7 @@ const photos = [1, 2, 3, 4, 5, 6, 7];
   </style>
 
   <script is:inline>
-    const lbPhotos = ["/images/exhibitions/jura-shust/1.jpg", "/images/exhibitions/jura-shust/2.jpg", "/images/exhibitions/jura-shust/3.jpg", "/images/exhibitions/jura-shust/4.jpg", "/images/exhibitions/jura-shust/5.jpg", "/images/exhibitions/jura-shust/6.jpg", "/images/exhibitions/jura-shust/7.jpg"];
+    const lbPhotos = ["/images/exhibitions/jura-shust/1.jpg", "/images/exhibitions/jura-shust/2.jpg", "/images/exhibitions/jura-shust/3.jpg", "/images/exhibitions/jura-shust/4.jpg", "/images/exhibitions/jura-shust/5.jpg", "/images/exhibitions/jura-shust/6.jpg"];
     let lbCurrent = 0;
     function openLightbox(i) { lbCurrent = +i; document.getElementById('lb-img').src = lbPhotos[lbCurrent]; document.getElementById('lightbox').classList.add('active'); }
     function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
