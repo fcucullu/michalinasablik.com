@@ -72,7 +72,6 @@ const podcasts = [
             <img src={podcast.image} alt={podcast.title} loading="lazy" />
           </div>
           <p class="podcast-title">{podcast.title}</p>
-          <span class="podcast-listen">Listen on Spotify</span>
         </a>
       ))}
     </div>
@@ -256,14 +255,6 @@ const podcasts = [
       font-size: 0.95rem;
       line-height: 1.4;
       font-weight: 600;
-    }
-    .podcast-listen {
-      font-size: 0.85rem;
-      color: #666;
-    }
-    .podcast-card:hover .podcast-listen {
-      color: #000;
-      text-decoration: underline;
     }
     @media (max-width: 700px) {
       .podcast-grid { grid-template-columns: 1fr 1fr; }
