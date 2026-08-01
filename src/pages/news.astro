@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 
 const news = [
+  { title: "The Best Art Diplomas at the Academy of Fine Arts in Gdańsk", img: "/images/news/best-art-diplomas-gdansk.jpg", details: "Gdańsk: Academy of Fine Arts, Zbrojownia Sztuki | July 25, 2026", text: "I sat on the jury of critics awarding the prizes at the 17th edition of The Best Art Diplomas at the Academy of Fine Arts in Gdańsk. We honoured Mateusz Pecyn and Piotr Lewandowski. I also took part in a discussion about the art world, debuts and artistic careers.", link: "", year: 2026, tags: ["Lecture"] },
   { title: "Jura Shust: Żywica*Solar Plexus", img: "/images/news/jura-shust.jpg", details: "Warsaw: Zachęta – National Gallery of Art | July 17 – September 27, 2026 | Opening: July 16, 7:00 PM", text: "I'm delighted to invite you to Jura Shust's Żywica*Solar Plexus at Zachęta — National Gallery of Art in Warsaw, the Belarusian artist's first solo exhibition in Poland, which I curated. Across five rooms, videos, sound, performative actions, and organic and industrial objects trace a path from Christmas tree plantations to ancient woodlands, asking how technology has taken over roles once held by rituals and spiritual practices. The opening is on Thursday, July 16 at 7:00 PM, with the group performance Birds with Human Heads.", link: "/exhibitions/jura-shust/", year: 2026, tags: ["Exhibition"] },
   { title: "The Art of the Garden, the Art of the Earth: Meg Webster", img: "/images/news/meg-webster.jpg", text: "New text out on Moodaily from Mood Scent Bar! This time on Meg Webster, an American pioneer of ecological and land art. Since the 1980s she has worked with living, natural matter — earth, moss, salt, plants and water — making gardens and installations in which the soil and its growth become the artwork itself.", link: "", year: 2026, tags: ["Publication"] },
   { title: "Feeding Window. Dawid Dzwonkowski", img: "/images/news/feeding-window.jpg", details: "Warsaw: ING Polish Art Foundation | Opening: June 23, 2026, 6:00 PM", text: "Part of the ING Polish Art Foundation's Artysta–Zawodowiec program, Feeding Window is a site-specific protein installation by Dawid Dzwonkowski. Entering into dialogue with the architecture of the shopping centre, it comments on the late-capitalist model of consumerism centred on optimising the individual, and on the colonial attitude toward non-human animals.", link: "/exhibitions/feeding-window/", year: 2026, tags: ["Exhibition"] },
@@ -87,11 +88,11 @@ const news = [
           <div class="news-image">
             {item.link ? (
               <a href={item.link} target="_blank" rel="noopener">
-                <img src={item.img ?? `/images/news/news-${i - 1}.jpg`} alt={item.title} loading="lazy"
+                <img src={item.img ?? `/images/news/news-${i - 2}.jpg`} alt={item.title} loading="lazy"
                   onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
               </a>
             ) : (
-              <img src={item.img ?? `/images/news/news-${i - 1}.jpg`} alt={item.title} loading="lazy"
+              <img src={item.img ?? `/images/news/news-${i - 2}.jpg`} alt={item.title} loading="lazy"
                 onerror="this.src=this.src.replace('.jpg','.png');this.onerror=()=>{this.src=this.src.replace('.png','.jpeg');this.onerror=()=>{this.src=this.src.replace('.jpeg','.webp');this.onerror=null}}" />
             )}
           </div>
