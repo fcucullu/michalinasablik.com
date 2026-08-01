@@ -5,6 +5,12 @@ const slides = [
   { image: "/images/exhibitions/jura-shust/promo.jpg", mobileImage: "/images/exhibitions/jura-shust/mobile.jpg", title: "Jura Shust: Żywica*Solar Plexus", subtitle: "Zachęta National Gallery of Art, Warsaw | Opening: July 16, 2026", link: "/exhibitions/jura-shust/", type: "exhibition", mobileFit: "contain" },
   { image: "/images/exhibitions/feeding-window/1.jpg", mobileImage: "/images/exhibitions/feeding-window/mobile.jpg", title: "Feeding Window. Dawid Dzwonkowski", subtitle: "ING Polish Art Foundation, Warsaw | Opening: June 23, 2026, 6:00 PM", link: "/exhibitions/feeding-window/", type: "exhibition" },
 ];
+
+const podcasts = [
+  { title: "Godzina Szumu #108 Justyna Szylman, Michalina Sablik i Aleksandra Skowrońska o nowym otwarciu w Zachęcie", image: "/images/podcasts/godzina-szumu-108.jpg", link: "https://open.spotify.com/episode/3vGJBkrJZZlAHlRmG1f3qU" },
+  { title: "Bęc Radio: Szukając nowych utopii → Sablik", image: "/images/podcasts/bec-radio-nowe-utopie.jpg", link: "https://open.spotify.com/episode/18YEUZFD0E5zEfG0b8LUtu" },
+  { title: "Sztuka nieobojętności: Nowe otwarcie Zachęty", image: "/images/podcasts/sztuka-nieobojetnosci.jpg", link: "https://open.spotify.com/episode/2JbnJd5h13EXz3nx24zppz" },
+];
 ---
 <Base
   title="Michalina Sablik — Curator of Contemporary Art"
@@ -53,6 +59,22 @@ const slides = [
       <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px;">
         <iframe src="https://www.youtube.com/embed/Qj8U8Z4Ec2o" title="Talk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
       </div>
+    </div>
+  </div>
+
+  <!-- Podcasts -->
+  <div class="container" style="margin-top: 4rem; margin-bottom: 4rem;">
+    <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">Listen to Recent Podcasts</h2>
+    <div class="podcast-grid">
+      {podcasts.map((podcast) => (
+        <a class="podcast-card" href={podcast.link} target="_blank" rel="noopener">
+          <div class="podcast-cover">
+            <img src={podcast.image} alt={podcast.title} loading="lazy" />
+          </div>
+          <p class="podcast-title">{podcast.title}</p>
+          <span class="podcast-listen">Listen on Spotify</span>
+        </a>
+      ))}
     </div>
   </div>
 
@@ -202,6 +224,49 @@ const slides = [
     }
     @media (max-width: 700px) {
       .video-grid { grid-template-columns: 1fr; }
+    }
+    .podcast-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .podcast-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .podcast-cover {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #f2f2f2;
+    }
+    .podcast-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .podcast-card:hover .podcast-cover img {
+      transform: scale(1.03);
+    }
+    .podcast-title {
+      margin: 0.75rem 0 0.25rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+    .podcast-listen {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .podcast-card:hover .podcast-listen {
+      color: #000;
+      text-decoration: underline;
+    }
+    @media (max-width: 700px) {
+      .podcast-grid { grid-template-columns: 1fr 1fr; }
     }
     .slideshow {
       position: relative;
