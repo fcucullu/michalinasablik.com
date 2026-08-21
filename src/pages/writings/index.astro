@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const texts = [
+  {
+    href: '/writings/si-on-brainrot/',
+    img: '/images/writings/writing-2.jpg',
+    alt: 'Si On, The Magic Woman and Other Stories, Bunkier Sztuki, Kraków',
+    tag: 'Catalogue Essay',
+    title: "Brainrot: Affect and Feminist Strategies in Si On's Work",
+    meta: 'Si On, Bunkier Sztuki, Kraków 2026',
+    size: 'mosaic-large',
+  },
+  {
+    href: '/writings/laureta-lurking/',
+    img: '/images/writings/writing-1.png',
+    alt: 'Laureta Hajrullahu, National Gallery of Kosovo QAFA, Pristina',
+    tag: 'Exhibition Leaflet',
+    title: 'Lurking, Aesthetic of Withdrawal and Y2K',
+    meta: "On Laureta Hajrullahu's Practice — National Gallery of Kosovo QAFA, Pristina 2026",
+    size: 'mosaic-medium',
+  },
+  {
+    href: '/writings/hay-anna-raczynska-michalina-sablik.pdf',
+    external: true,
+    img: '/images/writings/writing-3.jpg',
+    alt: 'Anna Raczyńska, Old Habits, New Beginnings',
+    tag: 'Catalogue Essay — PDF',
+    title: 'Hay. The Phantasmagorical Work of Anna Raczyńska',
+    meta: 'Old Habits, New Beginnings, 2025 — opens as PDF',
+    size: 'mosaic-medium',
+  },
+];
+---
+<Base
+  title="Writings — Michalina Sablik, Curator of Contemporary Art"
+  description="Critical texts and catalogue essays on contemporary art by curator and art historian Michalina Sablik."
+>
+  <div class="container page-content">
+    <h1>Writings</h1>
+
+    <div class="writings-mosaic">
+      {texts.map((t, i) => (
+        t.href ? (
+          <a
+            href={t.href}
+            class={`mosaic-tile ${t.size}`}
+            data-reveal
+            style={`--reveal-delay:${i * 110}ms`}
+            target={t.external ? '_blank' : undefined}
+            rel={t.external ? 'noopener' : undefined}
+          >
+            <img src={t.img} alt={t.alt} loading="lazy" />
+            <div class="mosaic-overlay">
+              <span class="mosaic-tag">{t.tag}</span>
+              <h3>{t.title}</h3>
+              <p>{t.meta}</p>
+            </div>
+          </a>
+        ) : (
+          <div class={`mosaic-tile mosaic-pending ${t.size}`} data-reveal style={`--reveal-delay:${i * 110}ms`}>
+            <div class="mosaic-overlay">
+              <span class="mosaic-tag">{t.tag}</span>
+              <h3>{t.title}</h3>
+              <p>{t.meta}</p>
+            </div>
+          </div>
+        )
+      ))}
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var mosaic = document.querySelector('.writings-mosaic');
+      var tiles = document.querySelectorAll('.mosaic-tile[data-reveal]');
+      if (!mosaic || !tiles.length) return;
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !('IntersectionObserver' in window)) return;
+
+      // Hide only now that we know we can bring them back.
+      mosaic.classList.add('reveal-ready');
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var delay = el.style.getPropertyValue('--reveal-delay') || '0ms';
+          el.style.transitionDelay = delay;
+          el.classList.add('is-revealed');
+          io.unobserve(el);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      tiles.forEach(function (t) { io.observe(t); });
+    })();
+  </script>
+</Base>
