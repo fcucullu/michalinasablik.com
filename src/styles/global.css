@@ -269,6 +269,7 @@ h4 { font-size: 22px; font-weight: 700; }
 .writings-mosaic {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 232px;
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -278,29 +279,120 @@ h4 { font-size: 22px; font-weight: 700; }
   display: block;
   background: #f5f5f5;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.mosaic-tile:hover {
-  transform: scale(0.98);
+.mosaic-tile:hover,
+.mosaic-tile:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
   opacity: 1;
+}
+.mosaic-tile:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
 }
 .mosaic-tile img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.mosaic-tile:hover img,
+.mosaic-tile:focus-visible img {
+  transform: scale(1.06);
+}
+
+/* Tiles rise into place as they scroll in, staggered down the mosaic.
+   Only hidden once the script has run, so the tiles stay visible if JS
+   never loads instead of leaving an empty page. */
+.writings-mosaic.reveal-ready .mosaic-tile[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.mosaic-tile[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mosaic-tile[data-reveal].is-revealed:hover,
+.mosaic-tile[data-reveal].is-revealed:focus-visible {
+  transform: translateY(-6px);
+}
+
+/* Sizes come from the grid, not from each image's aspect ratio: one tall tile
+   on the left, smaller ones stacked beside it. The images are all roughly
+   square, so a full-width band would crop the subject out of frame. */
 .mosaic-large {
   grid-column: span 7;
-  min-height: 380px;
+  grid-row: span 2;
 }
 .mosaic-medium {
   grid-column: span 5;
-  min-height: 380px;
+  grid-row: span 1;
 }
 .mosaic-small {
   grid-column: span 4;
-  min-height: 250px;
+  grid-row: span 1;
+}
+.mosaic-wide {
+  grid-column: span 12;
+  grid-row: span 1;
+}
+.mosaic-tall {
+  grid-column: span 5;
+  grid-row: span 2;
+}
+
+/* Text still to be supplied — visible in the layout, not yet a link */
+.mosaic-pending {
+  background: #fafafa;
+  border: 1px dashed #ddd;
+  cursor: default;
+}
+.mosaic-pending:hover {
+  transform: none;
+  box-shadow: none;
+}
+.mosaic-pending .mosaic-overlay {
+  position: relative;
+  background: none;
+  color: var(--gray-light);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.mosaic-pending .mosaic-overlay h3 {
+  color: var(--gray-light);
+}
+.mosaic-pending .mosaic-overlay p {
+  color: var(--gray-lighter);
+}
+.mosaic-pending .mosaic-tag {
+  background: #eee;
+  color: var(--gray-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mosaic-tile,
+  .mosaic-tile img,
+  .mosaic-tile[data-reveal].is-revealed {
+    transition: none;
+  }
+  .mosaic-tile[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .mosaic-tile:hover,
+  .mosaic-tile:focus-visible {
+    transform: none;
+  }
+  .mosaic-tile:hover img,
+  .mosaic-tile:focus-visible img {
+    transform: none;
+  }
 }
 .mosaic-placeholder {
   background: #fafafa;
@@ -355,11 +447,53 @@ h4 { font-size: 22px; font-weight: 700; }
   .writings-mosaic {
     grid-template-columns: 1fr;
   }
+  .writings-mosaic {
+    grid-auto-rows: auto;
+  }
   .mosaic-large,
   .mosaic-medium,
-  .mosaic-small {
+  .mosaic-small,
+  .mosaic-wide,
+  .mosaic-tall {
     grid-column: span 1;
-    min-height: 280px;
+    grid-row: span 1;
+    height: 300px;
+  }
+}
+
+/* Credits at the foot of every text: translator, place, date */
+.writing-credits {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+.writing-credits dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+}
+.writing-credits dt {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray-lighter);
+  margin: 0;
+}
+.writing-credits dd {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--gray-light);
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .writing-credits dl {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+  .writing-credits dd {
+    margin-bottom: 0.7rem;
   }
 }
 
@@ -394,6 +528,16 @@ h4 { font-size: 22px; font-weight: 700; }
 }
 .writing-detail-body p:first-child {
   text-indent: 0;
+}
+/* Short standalone lines set as verse in the original text */
+.writing-detail-body p.writing-verse {
+  text-indent: 0;
+  margin-left: 1.5rem;
+  margin-bottom: 0.35rem;
+  font-style: italic;
+}
+.writing-detail-body p.writing-verse + p:not(.writing-verse) {
+  margin-top: 1.2rem;
 }
 
 /* Exhibition detail */
