@@ -464,6 +464,67 @@ h4 { font-size: 22px; font-weight: 700; }
   }
 }
 
+/* Footnotes: superscript marker in the text, numbered list at the foot */
+.fn-ref {
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: super;
+  margin-left: 1px;
+}
+.fn-ref a {
+  color: var(--gray-light);
+  padding: 0 2px;
+}
+.fn-ref a:hover,
+.fn-ref a:focus-visible {
+  color: var(--black);
+  opacity: 1;
+}
+.writing-notes {
+  max-width: 842px;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+.writing-notes h2 {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray-lighter);
+  margin-bottom: 1rem;
+}
+.writing-notes ol {
+  padding-left: 1.4rem;
+  margin: 0;
+}
+.writing-notes li {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--gray-light);
+  margin-bottom: 0.7rem;
+}
+.writing-notes li a {
+  color: var(--gray-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+.writing-notes li a:hover,
+.writing-notes li a:focus-visible {
+  color: var(--black);
+  opacity: 1;
+}
+.writing-notes .fn-back {
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+/* Highlight the note you just jumped to */
+.writing-notes li:target {
+  color: var(--black);
+}
+
 /* Credits at the foot of every text: translator, place, date */
 .writing-credits {
   margin-top: 3rem;
