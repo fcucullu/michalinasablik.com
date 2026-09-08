@@ -1,0 +1,90 @@
+---
+import Base from '../../layouts/Base.astro';
+
+// Credits shown at the foot of the text.
+const credits = {
+  translator: 'Soren Gauger',
+  published: "Paulina Stasik, 'Self-Portrait with Tongue Sticking Out' (Autoportret z językiem na wierzchu) — the artist's first book, designed by Agata Biskup, with the artist's own commentaries and essays by Natalia Gierowska and Michalina Sablik, edited by Michalina Sablik. Published by BWA Tarnów.",
+  place: 'Tarnów',
+  date: '2025',
+};
+
+// Tells Google this essay is about Paulina Stasik and where it was published.
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: "Conquering Shame: Paulina Stasik's Painting and Writing",
+  url: 'https://michalinasablik.com/writings/stasik-conquering-shame/',
+  author: { '@type': 'Person', name: 'Michalina Sablik', url: 'https://michalinasablik.com' },
+  translator: { '@type': 'Person', name: 'Soren Gauger' },
+  inLanguage: 'en',
+  datePublished: '2025',
+  about: { '@type': 'Person', name: 'Paulina Stasik' },
+  isPartOf: {
+    '@type': 'Book',
+    name: 'Self-Portrait with Tongue Sticking Out',
+    alternateName: 'Autoportret z językiem na wierzchu',
+    author: { '@type': 'Person', name: 'Paulina Stasik' },
+    publisher: { '@type': 'Organization', name: 'BWA Tarnów' },
+    datePublished: '2025',
+  },
+  publisher: { '@type': 'Organization', name: 'BWA Tarnów' },
+  image: 'https://michalinasablik.com/images/exhibitions/paulina-stasik/book-1.jpg',
+};
+---
+<Base
+  title="Conquering Shame: Paulina Stasik's Painting and Writing — Michalina Sablik"
+  description="Conquering Shame: Paulina Stasik's Painting and Writing — an essay by curator and art historian Michalina Sablik, published in Paulina Stasik's first artist's book 'Self-Portrait with Tongue Sticking Out' (BWA Tarnów, 2025)."
+  jsonld={jsonld}
+>
+  <div class="container page-content">
+    <div class="writing-detail">
+      <div class="writing-detail-header">
+        <a href="/writings/" style="font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;display:inline-block;margin-bottom:1.5rem;">&larr; Back to Writings</a>
+        <h1>Conquering Shame: Paulina Stasik&rsquo;s Painting and Writing</h1>
+        <p class="writing-detail-author">Michalina Sablik</p>
+        <p class="writing-detail-meta">Essay in Paulina Stasik, &lsquo;Self-Portrait with Tongue Sticking Out&rsquo;, BWA Tarnów, Tarnów 2025</p>
+      </div>
+
+      <figure class="writing-figure">
+        <img src="/images/exhibitions/paulina-stasik/book-1.jpg" alt="Paulina Stasik, 'Self-Portrait with Tongue Sticking Out' (Autoportret z językiem na wierzchu), BWA Tarnów, 2025" loading="lazy" />
+        <figcaption>Paulina Stasik, <em>Self-Portrait with Tongue Sticking Out</em>, BWA Tarnów, 2025. Design: Agata Biskup.</figcaption>
+      </figure>
+
+      <blockquote class="writing-epigraph">
+<p>Woman must write her self: must write about women and bring women to writing, from which they have been driven away as violently as from their bodies – for the same reasons, by the same law, with the same fatal goal. Woman must put herself into the text – as into the world and into history – by her own movement.<sup class="fn-ref"><a id="fnref-1" href="#fn-1" aria-label="Footnote 1">1</a></sup></p>
+      </blockquote>
+
+      <div class="writing-detail-body">
+<p>This quote comes from the famous women’s writing (écriture féminine) manifesto ‘The Laugh of the Medusa’, written by French-Algerian second-wave feminist Hélène Cixous in 1975. Her piece, often discussed as and accused of being a voice for non-inclusive feminism of difference, and of showing a utopian faith in the world-altering power of art, remains among the boldest manifestos for creative women, describing the emotions that accompany an attempt to claim one’s voice and writing.<sup class="fn-ref"><a id="fnref-2" href="#fn-2" aria-label="Footnote 2">2</a></sup> Cixous encourages women to write, ignoring the critiques of others or the voices of the gatekeepers of publishing. Her art need not strive for the grammar and syntax of ‘male literature’, it can be written in irrational registers of desire, sex, the body and the abject. Writing is the act of discovering and changing oneself. Reclaiming writing means taking control over one’s own body, representation, and the story of women’s experience. This is an act of transgression and the destruction of the canon.</p>
+<p>Fifty years after this manifesto and the great revolution in culture that occurred when whole ranks of women artists were given voice, female Nobel Prize for Literature winners are still a mere 13% of all those awarded, and in the museum collections in Poland and abroad, works by women account for 4–30%.<sup class="fn-ref"><a id="fnref-3" href="#fn-3" aria-label="Footnote 3">3</a></sup> We still need to seek out new voices and languages to speak of non-dominant and non-normative experiences, of women, queer people, of those from the working classes or of various ethnic backgrounds. In the 2020s, many women are seeking their own language and becoming excited about their first steps into the world of the written word and their attempts at speaking out, much like Paulina Stasik, the author of this book. I have accompanied her in this process and felt the emotions in it: the shame, the fear of ‘babbling nonsense’, or not being ‘competent’ enough, but also the sense of power and the breakthrough of the moment.</p>
+<p>Her self-portrait of 2023, <em>Echo of One’s Own Bowels</em>, addresses similar emotions. A woman with tousled hair and squinting eyes is opening her mouth. She sticks out a firm tongue. On it is another figure – a naked woman, again resembling the artist. Her hands are cupped around her mouth like a bullhorn, to amplify her voice. She looks as though she were standing at a podium, shouting or calling out to someone from afar. The title suggests that the sound or the message is emerging from her bowels, that is, from her guts, her innards and abject body. What is the protagonist uttering: words or ‘emotional babble’? What does she feel standing at the podium? Is it the fear and shame that accompany a woman with every act of public speaking? Does she feel this is an act of courage and transgression? Does it give her a sense of power and agency? Stasik’s picture speaks of the need to express herself as an artist and a woman, and of an attempt to find a language which, as in Cixous, comes from the body, the senses, the emotions and the unconscious. It is an effort to tell herself without the censorship imposed by tradition and culture. She teases out a new language, to explode the imposed limitations, codifications, classes, rhetoric and structures.</p>
+<p>The book you are now finishing is another effort to speak herself without shame and fear. Easel, canvas, paints, paper and pencil are tools Stasik has fought to master over the past years. Now she has taken on another medium. She has picked up the pen, or rather, the computer keyboard, which allows her to create prose, diary entries, and autofiction. Publishing a book on her own accord is another gesture of courage. The artist tries to speak once more of the world she has created in painting, now through words, metaphors, and numerous intertextual references.</p>
+<p>Her voice rises up from a very concrete place, context and situation. Though Stasik carefully hid this in her paintings, under a layer of metaphors, references to myths and archetypes, we find glimpses of her personal history in them. The new pictures are no longer suspended in an indeterminate dreamland, they have clearly Polish or post-apocalyptic landscapes. The personal perspective and hardship of the autobiographical tale gain fuller expression in the literary text, where Stasik invites us to read between the lines – the story of a small town girl who convinced her parents to let her go to arts school and live in a dorm. Then she was admitted to the prestigious Academy of Fine Arts in Krakow. She learned the difficulties of migrating to the city and supporting herself through her studies. Then she found a precarious job in a cultural centre. She carved out her own language amid the male teaching staff. She worried at the accusations that her work was not conceptual enough, or seemed too academic in form, too emotional or infantile. She made pilgrimages to England to earn some money to continue her Doctoral studies and her work, but was only able to make small collages. We see the artist absorbed in her work, which ended up in one of Poland’s most famed galleries, and this paved the way for her international career. Ultimately, her pictures evoke the building of her own home as a physical place and symbolic shelter – a room of her own, as postulated a hundred years ago by another feminist writer, Virginia Woolf. And all this happens in Poland, where, in the early twenty-first century, thousands of women had to take to the streets to fight for their basic rights. Today, Stasik is settling the score with this history, and setting out to write a new chapter.</p>
+<p>Strung between corporeality and metaphor, history and fiction, the personal tale of Paulina Stasik, expressed in her numerous self-portraits, acquires a universal dimension. Her path reminds us that art can still be a tool of emancipation, transformation, and social advance. It is the voice of a generation of young woman painters who are unafraid to put their experience at the heart of the story, that is, of the world. They laugh alongside Medusa, and stick out their tongues.</p>
+      </div>
+
+      <section class="writing-notes" aria-label="Notes">
+        <h2>Notes</h2>
+        <ol>
+          <li id="fn-1">Hélène Cixous, ‘The Laugh of the Medusa’, <em>The Routledge Language and Cultural Theory Reader</em>, eds. Lucy Burke, Tony Crowley, Alan Girvin (New York–London: Routledge, 2003), p. 161. <a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></li>
+          <li id="fn-2">Sylwia Chutnik, ‘Meduza na strychu. O teorii i praktyce procesu twórczego’, <em>Acta Universitatis Lodziensis. Folia Sociologica</em>, 2022/80, pp. 11–22. <a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></li>
+          <li id="fn-3">Katarzyna Włodkowska, ‘Szklany sufit w sztuce. Muzea wolą mieć więcej męskich nazwisk’, <em>Gazeta Wyborcza</em>, 29.01.2024 <a href="https://wyborcza.pl/duzyformat/7,127290,30632887,szklany-sufit-w-sztuce-muzea-narodowe-do-dzis-wola-miec-wiecej.html" rel="noopener" target="_blank">https://wyborcza.pl/duzyformat/7,127290,30632887,szklany-sufit-w-sztuce-muzea-narodowe-do-dzis-wola-miec-wiecej.html</a> [accessed: 10.06.2025]. <a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></li>
+        </ol>
+      </section>
+
+      <footer class="writing-credits">
+        <dl>
+          <dt>Translation</dt>
+          <dd>{credits.translator}</dd>
+          <dt>Published in</dt>
+          <dd>{credits.published}</dd>
+          <dt>Place and date</dt>
+          <dd>{credits.place}, {credits.date}</dd>
+          <dt>Exhibition</dt>
+          <dd><a href="/exhibitions/paulina-stasik/">A View of One&rsquo;s Own. Paulina Stasik — BWA, Tarnów, 2025</a></dd>
+        </dl>
+      </footer>
+    </div>
+  </div>
+</Base>

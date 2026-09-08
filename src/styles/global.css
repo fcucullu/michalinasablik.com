@@ -608,6 +608,36 @@ h4 { font-size: 22px; font-weight: 700; }
 .writing-detail-body p.writing-verse + p:not(.writing-verse) {
   margin-top: 1.2rem;
 }
+/* Opening quotation set apart from the body text */
+.writing-epigraph {
+  margin: 0 0 2rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--gray-light, #999);
+}
+.writing-epigraph p {
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.8;
+  text-indent: 0;
+  margin: 0;
+}
+/* Single illustration inside a writing page */
+.writing-figure {
+  margin: 0 0 2.5rem;
+}
+.writing-figure img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+}
+.writing-figure figcaption {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gray-light);
+  margin-top: 0.6rem;
+  max-width: 420px;
+}
 
 /* Exhibition detail */
 .exhibition-detail-venue {
