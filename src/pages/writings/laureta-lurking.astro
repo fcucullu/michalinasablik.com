@@ -9,10 +9,30 @@ const credits = {
   place: 'Pristina',
   date: '2026',
 };
+
+// Tells Google this essay is about Laureta Hajrullahu and where it was published.
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: "Lurking, Aesthetic of Withdrawal and Y2K. On Laureta Hajrullahu's Practice",
+  url: 'https://michalinasablik.com/writings/laureta-lurking/',
+  author: { '@type': 'Person', name: 'Michalina Sablik', url: 'https://michalinasablik.com' },
+  inLanguage: 'en',
+  datePublished: '2026',
+  about: { '@type': 'Person', name: 'Laureta Hajrullahu' },
+  isPartOf: {
+    '@type': 'CreativeWork',
+    name: "Exhibition leaflet — Laureta Hajrullahu, 'to undo, to crumble, to vanish'",
+    publisher: { '@type': 'Organization', name: 'National Gallery of Kosovo QAFA, Pristina' },
+    datePublished: '2026',
+  },
+  image: 'https://michalinasablik.com/images/writings/writing-1.png',
+};
 ---
 <Base
   title="Lurking, Aesthetic of Withdrawal and Y2K. On Laureta Hajrullahu's Practice — Michalina Sablik"
   description="Lurking, Aesthetic of Withdrawal and Y2K — an essay on the practice of Laureta Hajrullahu by curator and art historian Michalina Sablik."
+  jsonld={jsonld}
 >
   <div class="container page-content">
     <div class="writing-detail">

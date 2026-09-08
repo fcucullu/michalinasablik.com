@@ -1,10 +1,41 @@
 ---
 import Base from '../../layouts/Base.astro';
 const photos = [1,2,3,4,5,6,7];
+
+// Tells Google this page is about Paulina Stasik's exhibition, not only about the curator.
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'ExhibitionEvent',
+  name: "A View of One's Own. Paulina Stasik",
+  url: 'https://michalinasablik.com/exhibitions/paulina-stasik/',
+  startDate: '2025-10-19',
+  endDate: '2025-11-18',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'BWA Tarnów',
+    address: { '@type': 'PostalAddress', addressLocality: 'Tarnów', addressCountry: 'PL' },
+  },
+  performer: { '@type': 'Person', name: 'Paulina Stasik' },
+  about: { '@type': 'Person', name: 'Paulina Stasik' },
+  organizer: { '@type': 'Person', name: 'Michalina Sablik', url: 'https://michalinasablik.com' },
+  workFeatured: {
+    '@type': 'Book',
+    name: 'Self-Portrait with Tongue Sticking Out',
+    alternateName: 'Autoportret z językiem na wierzchu',
+    author: { '@type': 'Person', name: 'Paulina Stasik' },
+    publisher: { '@type': 'Organization', name: 'BWA Tarnów' },
+    datePublished: '2025',
+  },
+  description:
+    "A View of One's Own — a solo exhibition of autobiographical paintings by Paulina Stasik, curated by Michalina Sablik at BWA Tarnów, accompanied by the artist's first book Self-Portrait with Tongue Sticking Out.",
+};
 ---
 <Base
   title="A View of One's Own. Paulina Stasik — Michalina Sablik"
   description="A View of One's Own by Paulina Stasik — exhibition curated by Michalina Sablik at BWA, Tarnów, 2025."
+  jsonld={jsonld}
 >
   <div class="container page-content">
     <div class="ex-layout">

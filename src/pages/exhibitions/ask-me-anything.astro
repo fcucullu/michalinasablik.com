@@ -1,10 +1,36 @@
 ---
 import Base from '../../layouts/Base.astro';
 const photos = [1];
+
+// Tells Google this page is about Justyna Górowska's exhibition, not only about the curator.
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'ExhibitionEvent',
+  name: 'Ask me anything. WetMeWild',
+  url: 'https://michalinasablik.com/exhibitions/ask-me-anything/',
+  startDate: '2026-05-29',
+  endDate: '2026-06-19',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'RARO On-Site Projects',
+    address: { '@type': 'PostalAddress', addressLocality: 'Barcelona', addressCountry: 'ES' },
+  },
+  performer: { '@type': 'Person', name: 'Justyna Górowska' },
+  about: [
+    { '@type': 'Person', name: 'Justyna Górowska' },
+    { '@type': 'Thing', name: 'WetMeWild' },
+  ],
+  organizer: { '@type': 'Person', name: 'Michalina Sablik', url: 'https://michalinasablik.com' },
+  description:
+    "Ask me anything. WetMeWild — a solo exhibition by Justyna Górowska presenting her AI avatar WetMeWild and the photographic series Capitalotronics, curated by Michalina Sablik at RARO On-Site Projects, Barcelona.",
+};
 ---
 <Base
   title="Ask me anything. WetMeWild. Justyna Górowska — Michalina Sablik"
   description="Ask me anything. WetMeWild. Justyna Górowska — exhibition curated by Michalina Sablik at RARO On-Site Projects, Barcelona, 2026."
+  jsonld={jsonld}
 >
   <div class="container page-content">
     <div class="ex-layout">

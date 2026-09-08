@@ -5,6 +5,9 @@ const SITE_URL = 'https://michalinasablik.com';
 const {
   title = 'Michalina Sablik — Curator of Contemporary Art',
   description = 'Michalina Sablik — art historian and independent curator of contemporary art (kuratorka sztuki współczesnej). Exhibitions, public programs and critical writing across Warsaw and beyond.',
+  // Optional extra JSON-LD for a single page (e.g. an exhibition or an essay),
+  // so Google can tell *who and what* the page is about, not only who wrote it.
+  jsonld = null,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
 const socialImage = new URL('/images/og-image.jpg', SITE_URL).href;
@@ -51,6 +54,7 @@ const personSchema = {
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={socialImage}>
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
 </head>
 <body>
   <header class="site-header">

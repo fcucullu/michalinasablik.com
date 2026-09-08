@@ -8,10 +8,31 @@ const credits = {
   place: 'Kraków',
   date: '2026',
 };
+
+// Tells Google this essay is about Si On and where it was published.
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: "Brainrot: Affect and Feminist Strategies in Si On's Work",
+  url: 'https://michalinasablik.com/writings/si-on-brainrot/',
+  author: { '@type': 'Person', name: 'Michalina Sablik', url: 'https://michalinasablik.com' },
+  translator: { '@type': 'Person', name: 'Jerzy Juruś' },
+  inLanguage: 'en',
+  datePublished: '2026',
+  about: { '@type': 'Person', name: 'Si On' },
+  isPartOf: {
+    '@type': 'Book',
+    name: 'Si On. The Magic Woman and Other Stories',
+    publisher: { '@type': 'Organization', name: 'Bunkier Sztuki, Kraków' },
+    datePublished: '2026',
+  },
+  image: 'https://michalinasablik.com/images/writings/writing-2.jpg',
+};
 ---
 <Base
   title="Brainrot: Affect and Feminist Strategies in Si On's Work — Michalina Sablik"
   description="Brainrot: Affect and Feminist Strategies in Si On's Work — an essay on contemporary art by curator and art historian Michalina Sablik."
+  jsonld={jsonld}
 >
   <div class="container page-content">
     <div class="writing-detail">

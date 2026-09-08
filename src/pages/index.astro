@@ -6,6 +6,20 @@ const slides = [
   { image: "/images/exhibitions/feeding-window/1.jpg", mobileImage: "/images/exhibitions/feeding-window/mobile.jpg", title: "Feeding Window. Dawid Dzwonkowski", subtitle: "ING Polish Art Foundation, Warsaw | Opening: June 23, 2026, 6:00 PM", link: "/exhibitions/feeding-window/", type: "exhibition" },
 ];
 
+// Linked straight from the home page: these pages carry the artists' names and
+// were previously reachable only through the section index pages.
+const selected = [
+  { href: "/exhibitions/ask-me-anything/", title: "Ask me anything. WetMeWild", meta: "Justyna Górowska — RARO On-Site Projects, Barcelona 2026" },
+  { href: "/exhibitions/jura-shust/", title: "Żywica*Solar Plexus", meta: "Jura Shust — Zachęta National Gallery of Art, Warsaw 2026" },
+  { href: "/exhibitions/paulina-stasik/", title: "A View of One's Own", meta: "Paulina Stasik — BWA Tarnów 2025" },
+  { href: "/exhibitions/soft-smiths/", title: "Soft Smiths. Contemporary Women's* Metalwork", meta: "Centre of Polish Sculpture, Orońsko 2025" },
+  { href: "/exhibitions/slime-by-joanna-fluder/", title: "Slime", meta: "Joanna Fluder — Zachęta National Gallery of Art, Warsaw 2025" },
+  { href: "/exhibitions/from-the-ashes/", title: "From the Ashes", meta: "Zachęta National Gallery of Art, Warsaw 2024" },
+  { href: "/writings/stasik-conquering-shame/", title: "Conquering Shame: Paulina Stasik's Painting and Writing", meta: "Essay — 'Self-Portrait with Tongue Sticking Out', BWA Tarnów 2025" },
+  { href: "/writings/si-on-brainrot/", title: "Brainrot: Affect and Feminist Strategies in Si On's Work", meta: "Essay — Bunkier Sztuki, Kraków 2026" },
+  { href: "/writings/laureta-lurking/", title: "Lurking, Aesthetic of Withdrawal and Y2K", meta: "Essay on Laureta Hajrullahu — National Gallery of Kosovo QAFA 2026" },
+];
+
 const podcasts = [
   { title: "Bęc Radio: Splot duchowości i technologii → Sablik", image: "/images/podcasts/bec-radio-splot-duchowosci.jpg", link: "https://open.spotify.com/episode/2cnwqChWfU5u2SzwWLfsz2" },
   { title: "Południe RDC: Michalina Sablik o wystawie „Żywica* Splot słoneczny” Jury Shusta w Zachęcie", image: "/images/podcasts/poludnie-rdc-michalina-sablik.jpg", link: "https://www.rdc.pl/podcast/poludnie-rdc_mWFYkAw8N302RRpMsYbz?episode=OzIcQyWhPvekKrhGQRhu" },
@@ -80,6 +94,23 @@ const podcasts = [
         </a>
       ))}
     </div>
+  </div>
+
+  <!-- Selected work: direct links from the home page so search engines reach the
+       exhibition and essay pages, which are otherwise two clicks deep. -->
+  <div class="container" style="margin-top: 4rem; margin-bottom: 4rem;">
+    <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;">Selected Exhibitions & Writings</h2>
+    <div class="selected-grid">
+      {selected.map((s) => (
+        <a class="selected-link" href={s.href}>
+          <span class="selected-title">{s.title}</span>
+          <span class="selected-meta">{s.meta}</span>
+        </a>
+      ))}
+    </div>
+    <p style="margin-top: 1.5rem; font-weight: 300;">
+      <a href="/exhibitions/">All exhibitions</a> &nbsp;·&nbsp; <a href="/writings/">All writings</a>
+    </p>
   </div>
 
   <!-- Contact -->
@@ -228,6 +259,39 @@ const podcasts = [
     }
     @media (max-width: 700px) {
       .video-grid { grid-template-columns: 1fr; }
+    }
+    .selected-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem 2rem;
+    }
+    .selected-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border-top: 1px solid #e5e5e5;
+      padding-top: 0.75rem;
+    }
+    .selected-title {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .selected-meta {
+      display: block;
+      margin-top: 0.3rem;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--gray-light);
+      line-height: 1.4;
+    }
+    .selected-link:hover .selected-title { text-decoration: underline; }
+    @media (max-width: 1000px) {
+      .selected-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .selected-grid { grid-template-columns: 1fr; }
     }
     .podcast-grid {
       display: grid;
