@@ -1,10 +1,40 @@
 ---
 import Base from '../../layouts/Base.astro';
 const photos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+const artists = [
+  'Michalina Bigaj', 'Hannah Sophie Dunkelberg', 'Agata Ingarden', 'Lito Kattou',
+  'Magdalena Lazar', 'Lucia Leuci', 'Markéta Magidová', 'Ola Nenko',
+  'Emma Passera', 'Ala Savashevich', 'Weronika Wysocka',
+];
+
+// Tells Google which artists this exhibition page is about.
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'ExhibitionEvent',
+  name: "Soft Smiths. Contemporary Women's* Metalwork",
+  url: 'https://michalinasablik.com/exhibitions/soft-smiths/',
+  startDate: '2025-07-05',
+  endDate: '2025-08-24',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'Centre of Polish Sculpture in Orońsko',
+    address: { '@type': 'PostalAddress', addressLocality: 'Orońsko', addressCountry: 'PL' },
+  },
+  performer: artists.map((name) => ({ '@type': 'Person', name })),
+  about: artists.map((name) => ({ '@type': 'Person', name })),
+  organizer: [
+    { '@type': 'Person', name: 'Michalina Sablik', url: 'https://michalinasablik.com' },
+    { '@type': 'Person', name: 'Magdalena Lazar' },
+  ],
+};
 ---
 <Base
   title="Soft Smiths. Contemporary Women's* Metalwork — Michalina Sablik"
   description="Soft Smiths. Contemporary Women's* Metalwork — exhibition curated by Michalina Sablik at Center of Polish Sculpture, Orońsko, 2025."
+  jsonld={jsonld}
 >
   <div class="container page-content">
     <div class="ex-layout">
