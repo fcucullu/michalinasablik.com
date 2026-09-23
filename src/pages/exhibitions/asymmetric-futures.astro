@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+const photos = [1];
+---
+<Base
+  title="Joan Palle: Asymmetric Futures — Michalina Sablik"
+  description="Asymmetric Futures — solo exhibition by Joan Palle at Piana Gallery, Kraków, curated by Michalina Sablik, 3 October – 8 November 2026."
+>
+  <div class="container page-content">
+    <div class="ex-layout">
+      <div class="ex-text">
+        <h1>Asymmetric Futures</h1>
+        <p class="exhibition-detail-venue">Piana Gallery | Kraków | 2026</p>
+        <div class="exhibition-detail-body">
+          <p>"Human Safari." In early August 2026, headlines and shocking footage from Kherson, Ukraine, went around the world. They show a drone following a fleeing civilian and trying to "hunt" him. This is the new dystopian reality of the war unfolding in Ukraine or in the Middle East. In recent months Poland has been experiencing hybrid warfare not only as a media phenomenon but also through real violations of its airspace. Poland is not the only country experiencing this threat, which is why the debate across the whole EU on the militarization of Europe, the expansion of armies, and border protection is becoming increasingly intense. At the same time, Europe remains politically heterogeneous. The artist Joan Pallé comes from Catalonia, Spain, a country that in recent years has taken a more skeptical stance toward the rapid increase in European defense spending and has resisted involvement in Trump's wars. This asymmetry of experience, along with questions about the future development of technology and its moral evaluation, are the themes taken up in his solo exhibition at Galeria Piana in Kraków.</p>
+          <p>War is a testing ground for the most advanced technologies. Of particular importance is artificial intelligence and the development of autonomous weapons systems: machines capable of recognizing, tracking, and selecting targets, limiting or eliminating direct human control. Technologies that until recently belonged to the realm of science fiction are becoming part of the contemporary arms industry. The exhibition presents the sculptural installation SWARM, consisting of 1:1 scale replicas of the KARGU-2 military drone, developed by the Turkish defense company STM. The starting point for the work was the report of the UN Panel of Experts on the situation in Libya, published on March 8, 2021. This document contains a description of weapons systems that may have been used autonomously — without direct operator control — during the conflict in Libya. It constitutes a historically significant record documenting the first use of this type of machine in history. Made of carbon fiber, acrylic resin, and aluminum, the objects at first glance resemble real drones, but a closer look reveals their sculptural nature. SWARM draws attention to the ethical and political consequences of systems that can make decisions about life and death, as well as to the gradual normalization of autonomous military technologies.</p>
+          <p>The second group of works consists of drawings from the Exploded Views series, the result of Pallé's research into the Eurodrone — a joint project of Germany, France, Italy, and Spain aimed at creating a European unmanned aerial system in the MALE (Medium Altitude Long Endurance) class. The program is one example of Europe's pursuit of technological and military autonomy. The Eurodrone is currently in the development phase, with its first flight planned for 2029. Pallé uses the language of technical drawing and scientific illustration: cross-sections, diagrams, and exploded views. However, he strips them of their traditionally functional character. Instead of aseptic technical descriptions, quotations, references, and reflections on the political and moral consequences of the arms industry appear. The work also touches on the cultural fascination with militaria. The precision of technical drawings, the aerodynamic shapes of the machines, their scale and design aesthetics can evoke admiration similar to that inspired by cars, airplanes, or other technical objects. Pallé points to the connection between the fetishization of militaria and the cultural processes that socialize boys toward violence.</p>
+          <p>Two works from the An Ideal Sky series shift this reflection toward a more poetic image of the sky. The starting point for the series is Aerei by the Italian artist Alighiero Boetti, who obsessively catalogued existing airplane models. His compositions resemble visual inventories: the silhouettes of successive machines fill the surface of the works, combining a fascination with technology with a poetic vision of the boundless space of the sky. Pallé returns to Boetti's compositional structure, replacing the airplanes with unmanned drones. Each painting depicts different models of contemporary drones, becoming a current inventory of surveillance machines. The method of producing these works is also significant. Boetti, as in many of his other projects, made use of delegated labor: the silhouettes of the airplanes in Aerei were drawn by his assistants. Pallé translates this strategy into a mechanized mode of production. The images are produced using a cutting plotter, which replaces the human hand with the precision of automated technology.</p>
+          <p>"The future is already here — it's just not evenly distributed," wrote William Gibson, the American science-fiction writer and father of cyberpunk. At a time when artificial intelligence and companies like Anthropic are becoming a strategic resource of the state, and totalitarian countries are developing their arsenals, these asymmetries are deepening. The development of autonomous weapons systems poses a question to Western societies: in the name of protecting their own values (and their own sky!), are they willing to develop technologies that at the same time undermine those very values? What will our ideal sky look like?</p>
+        </div>
+        <div class="exhibition-detail-credits">
+          <p><strong>Dates:</strong> 3 October – 8 November 2026</p>
+          <p><strong>Artist:</strong> Joan Palle</p>
+          <p><strong>Curator:</strong> Michalina Sablik</p>
+          <p><strong>Venue:</strong> Piana Gallery, Długa 15, Kraków</p>
+          <p><strong>Organiser:</strong> Społeczna Instytucja Kultury Miasta Krakowa</p>
+        </div>
+      </div>
+      <div class="ex-thumbs">
+        {photos.map((n) => (
+          <img src={`/images/exhibitions/asymmetric-futures/${n}.jpg`} alt="Asymmetric Futures, exhibition poster" loading="lazy" class="thumb" data-index={n - 1} onclick="openLightbox(this.dataset.index)" />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lb-close" onclick="closeLightbox()">&times;</button>
+    <button class="lb-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <img id="lb-img" src="" alt="Asymmetric Futures, exhibition poster" />
+    <button class="lb-next" onclick="navLightbox(1)">&#8250;</button>
+  </div>
+
+  <style>
+    .ex-layout { display: grid; grid-template-columns: 1fr 280px; gap: 2.5rem; align-items: start; }
+    .ex-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .thumb { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
+    .thumb:hover { opacity: 0.8; }
+    @media (max-width: 700px) { .ex-layout { grid-template-columns: 1fr; } .ex-thumbs { grid-template-columns: 1fr 1fr 1fr; } }
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
+    #lightbox.active { display: flex; }
+    #lb-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+    .lb-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; z-index: 10; }
+    .lb-prev, .lb-next { position: absolute; top: 50%; transform: translateY(-50%); font-size: 3rem; color: #fff; background: none; border: none; cursor: pointer; padding: 1rem; z-index: 10; }
+    .lb-prev { left: 1rem; } .lb-next { right: 1rem; }
+    .lb-prev:hover, .lb-next:hover { color: #ccc; }
+  </style>
+
+  <script is:inline define:vars={{ photoCount: photos.length }}>
+    const totalPhotos = photoCount;
+    let currentIndex = 0;
+    function openLightbox(index) { currentIndex = parseInt(index); document.getElementById('lb-img').src = `/images/exhibitions/asymmetric-futures/${currentIndex + 1}.jpg`; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
+    function navLightbox(dir) { currentIndex = (currentIndex + dir + totalPhotos) % totalPhotos; document.getElementById('lb-img').src = `/images/exhibitions/asymmetric-futures/${currentIndex + 1}.jpg`; }
+    document.addEventListener('keydown', (e) => { if (!document.getElementById('lightbox').classList.contains('active')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') navLightbox(-1); if (e.key === 'ArrowRight') navLightbox(1); });
+    window.openLightbox = openLightbox; window.closeLightbox = closeLightbox; window.navLightbox = navLightbox;
+  </script>
+</Base>
