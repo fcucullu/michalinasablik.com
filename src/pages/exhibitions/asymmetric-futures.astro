@@ -1,6 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
-const photos = [1];
+const photos = [1, 2];
+const alts: Record<number, string> = {
+  1: 'Asymmetric Futures, exhibition poster',
+  2: 'Joan Palle, Asymmetric wars for asymmetric futures, 2023, framed drawing',
+};
 ---
 <Base
   title="Joan Palle: Asymmetric Futures — Michalina Sablik"
@@ -29,7 +33,7 @@ const photos = [1];
       </div>
       <div class="ex-thumbs">
         {photos.map((n) => (
-          <img src={`/images/exhibitions/asymmetric-futures/${n}.jpg`} alt="Asymmetric Futures, exhibition poster" loading="lazy" class="thumb" data-index={n - 1} onclick="openLightbox(this.dataset.index)" />
+          <img src={`/images/exhibitions/asymmetric-futures/${n}.jpg`} alt={alts[n]} loading="lazy" class="thumb" data-index={n - 1} onclick="openLightbox(this.dataset.index)" />
         ))}
       </div>
     </div>
