@@ -1,9 +1,25 @@
 ---
 import Base from '../../layouts/Base.astro';
-const photos = [1, 2];
+const photos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 const alts: Record<number, string> = {
   1: 'Asymmetric Futures, exhibition poster',
-  2: 'Joan Palle, Asymmetric wars for asymmetric futures, 2023, framed drawing',
+  2: 'Asymmetric Futures, installation view at Piana Gallery with two An Ideal Sky paintings and the SWARM installation seen through the doorway',
+  3: 'Asymmetric Futures, installation view with an An Ideal Sky diptych, a framed Exploded Views drawing and the passage to the lower room',
+  4: 'Asymmetric Futures, installation view of the lower room with the SWARM drones on the floor and two framed Exploded Views drawings',
+  5: 'Asymmetric Futures, installation view with two framed drawings from the Exploded Views series',
+  6: 'Asymmetric Futures, installation view with the framed Eurodrone drawing and the steps leading to the SWARM installation',
+  7: 'Asymmetric Futures, installation view with an An Ideal Sky diptych and the framed Eurodrone drawing',
+  8: 'Joan Palle, An Ideal Sky, triptych on folded panels, installation view with a drone drawing on the wall',
+  9: 'Joan Palle, An Ideal Sky, triptych on folded panels, front view',
+  10: 'Joan Palle, An Ideal Sky, triptych painting of drone silhouettes against a gradient sky',
+  11: 'Asymmetric Futures, installation view with a drone drawn directly on the gallery wall above an An Ideal Sky painting',
+  12: 'Joan Palle, drone drawn directly on the gallery wall below the ceiling',
+  13: 'Joan Palle, drone drawn directly on the gallery wall',
+  14: 'Asymmetric Futures, installation view with the SWARM drones on the floor and a framed Exploded Views drawing',
+  15: 'Joan Palle, SWARM, 1:1 scale replicas of the KARGU-2 military drone, installation view',
+  16: 'Joan Palle, SWARM, two drone replicas in carbon fibre, acrylic resin and aluminium',
+  17: 'Joan Palle, Eurodrone MALE-RPAS, framed drawing from the Exploded Views series',
+  18: 'Joan Palle, Asymmetric wars for asymmetric futures, framed drawing from the Exploded Views series',
 };
 ---
 <Base
@@ -29,6 +45,7 @@ const alts: Record<number, string> = {
           <p><strong>Coordinator:</strong> Michał Sroka</p>
           <p><strong>Venue:</strong> Piana Gallery, Długa 15, Kraków</p>
           <p><strong>Organiser:</strong> Społeczna Instytucja Kultury Miasta Krakowa</p>
+          <p><strong>Photographs:</strong> Filip Rybkowski</p>
         </div>
       </div>
       <div class="ex-thumbs">
@@ -62,12 +79,13 @@ const alts: Record<number, string> = {
     .lb-prev:hover, .lb-next:hover { color: #ccc; }
   </style>
 
-  <script is:inline define:vars={{ photoCount: photos.length }}>
+  <script is:inline define:vars={{ photoCount: photos.length, photoAlts: alts }}>
     const totalPhotos = photoCount;
     let currentIndex = 0;
-    function openLightbox(index) { currentIndex = parseInt(index); document.getElementById('lb-img').src = `/images/exhibitions/asymmetric-futures/${currentIndex + 1}.jpg`; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function showPhoto() { const img = document.getElementById('lb-img'); img.src = `/images/exhibitions/asymmetric-futures/${currentIndex + 1}.jpg`; img.alt = photoAlts[currentIndex + 1] || ''; }
+    function openLightbox(index) { currentIndex = parseInt(index); showPhoto(); document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
     function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
-    function navLightbox(dir) { currentIndex = (currentIndex + dir + totalPhotos) % totalPhotos; document.getElementById('lb-img').src = `/images/exhibitions/asymmetric-futures/${currentIndex + 1}.jpg`; }
+    function navLightbox(dir) { currentIndex = (currentIndex + dir + totalPhotos) % totalPhotos; showPhoto(); }
     document.addEventListener('keydown', (e) => { if (!document.getElementById('lightbox').classList.contains('active')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') navLightbox(-1); if (e.key === 'ArrowRight') navLightbox(1); });
     window.openLightbox = openLightbox; window.closeLightbox = closeLightbox; window.navLightbox = navLightbox;
   </script>
