@@ -15,10 +15,15 @@
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/vercel": "^11.0.4",
     "@vercel/analytics": "^2.0.1",
-    "astro": "^7.3.2",
+    "astro": "^7.3.8",
     "resend": "^6.10.0"
   },
   "overrides": {
-    "path-to-regexp": "^6.3.0"
+    "path-to-regexp": "^6.3.0",
+    "sharp": "^0.35.5",
+    "source-map-js": "^1.2.2",
+    "http-cache-semantics": "^4.3.0",
+    "brace-expansion": "^5.0.12",
+    "devalue": "^5.9.4"
   }
 }
