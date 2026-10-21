@@ -1,6 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
 
+const photos = [1];
+const alts: Record<number, string> = {
+  1: 'Open Eyes Art Festival 2026, key visual poster',
+};
 const artists = [
   'Barbara Dubis', 'Aleksander Dul', 'Franciszek Geissler', 'Agata Karolonek',
   'Klaudia Kiełbasa', 'Bożena Knapik', 'Wiktoria Paszkiewicz', 'Marianna Rodziewicz',
@@ -26,16 +30,53 @@ const artists = [
           <p><strong>Dates:</strong> 6 – 30 November 2026</p>
           <p><strong>Opening:</strong> 6 November 2026, 4:00 PM</p>
           <p><strong>Curator:</strong> Michalina Sablik</p>
+          <p><strong>Exhibition design:</strong> Michał Sroka</p>
+          <p><strong>Coordinator:</strong> Kamila Zacharek</p>
           <p><strong>Artists:</strong> {artists.join(', ')}</p>
           <p><strong>Venue:</strong> Towarzystwo Przyjaciół Sztuk Pięknych — Pałac Sztuki, pl. Szczepański 4, 31-011 Kraków</p>
           <p><strong>Part of:</strong> Open Eyes Art Festival 2026</p>
           <p><strong>Opening hours:</strong> Tuesday – Sunday, 10:00 – 18:00. Closed on Mondays.</p>
         </div>
       </div>
+      <div class="ex-thumbs">
+        {photos.map((n) => (
+          <img src={`/images/exhibitions/the-sun-has-grown-old/${n}.jpg`} alt={alts[n]} loading="lazy" class="thumb" data-index={n - 1} onclick="openLightbox(this.dataset.index)" />
+        ))}
+      </div>
     </div>
   </div>
 
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lb-close" onclick="closeLightbox()">&times;</button>
+    <button class="lb-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <img id="lb-img" src="" alt="Open Eyes Art Festival 2026, key visual poster" />
+    <button class="lb-next" onclick="navLightbox(1)">&#8250;</button>
+  </div>
+
   <style>
-    .ex-layout { display: grid; grid-template-columns: minmax(0, 760px); justify-content: start; gap: 2.5rem; align-items: start; }
+    .ex-layout { display: grid; grid-template-columns: 1fr 280px; gap: 2.5rem; align-items: start; }
+    .ex-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .thumb { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
+    .thumb:hover { opacity: 0.8; }
+    @media (max-width: 700px) { .ex-layout { grid-template-columns: 1fr; } .ex-thumbs { grid-template-columns: 1fr 1fr 1fr; } }
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
+    #lightbox.active { display: flex; }
+    #lb-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+    .lb-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2.5rem; color: #fff; background: none; border: none; cursor: pointer; z-index: 10; }
+    .lb-prev, .lb-next { position: absolute; top: 50%; transform: translateY(-50%); font-size: 3rem; color: #fff; background: none; border: none; cursor: pointer; padding: 1rem; z-index: 10; }
+    .lb-prev { left: 1rem; } .lb-next { right: 1rem; }
+    .lb-prev:hover, .lb-next:hover { color: #ccc; }
   </style>
+
+  <script is:inline define:vars={{ photoCount: photos.length, photoAlts: alts }}>
+    const totalPhotos = photoCount;
+    let currentIndex = 0;
+    function showPhoto() { const img = document.getElementById('lb-img'); img.src = `/images/exhibitions/the-sun-has-grown-old/${currentIndex + 1}.jpg`; img.alt = photoAlts[currentIndex + 1] || ''; }
+    function openLightbox(index) { currentIndex = parseInt(index); showPhoto(); document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
+    function navLightbox(dir) { currentIndex = (currentIndex + dir + totalPhotos) % totalPhotos; showPhoto(); }
+    document.addEventListener('keydown', (e) => { if (!document.getElementById('lightbox').classList.contains('active')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') navLightbox(-1); if (e.key === 'ArrowRight') navLightbox(1); });
+    window.openLightbox = openLightbox; window.closeLightbox = closeLightbox; window.navLightbox = navLightbox;
+  </script>
 </Base>
