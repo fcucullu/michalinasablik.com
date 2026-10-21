@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const artists = [
+  'Barbara Dubis', 'Aleksander Dul', 'Franciszek Geissler', 'Agata Karolonek',
+  'Klaudia Kiełbasa', 'Bożena Knapik', 'Wiktoria Paszkiewicz', 'Marianna Rodziewicz',
+  'Zuzanna Romańska', 'Karolina Śmiałek', 'Magdalena Tryba', 'Andrzej Wajda',
+  'Jakub Wójcik', 'Milan Zientara',
+];
+---
+<Base
+  title="The Sun Has Grown Old — Michalina Sablik"
+  description="The Sun Has Grown Old (Słońce się zestarzało) — curated exhibition of Academy of Fine Arts in Kraków diplomas at the Palace of Art, part of Open Eyes Art Festival 2026, curated by Michalina Sablik, 6–30 November 2026."
+>
+  <div class="container page-content">
+    <div class="ex-layout">
+      <div class="ex-text">
+        <h1>The Sun Has Grown Old</h1>
+        <p class="exhibition-detail-venue">Pałac Sztuki | Kraków | 2026</p>
+        <div class="exhibition-detail-body">
+          <p>It still rises in the east and hides in the west. It circles unchangingly, marking out the rhythm of days, months and years — one of the last sources of certainty. For a few years now it has seemed to burn ever more fiercely, mercilessly raising the temperature of the oceans. Scientists observe flares and eruptions on its surface, disturbances of its magnetic field, further signs of its violent activity. The rare eclipses we can watch this year and the next encourage us to look out for signs and portents of a new epoch. Perhaps the sun is no longer as unchanging as we would like to believe. Like every empire, every deity, every dominant narrative and every prevailing paradigm, one day it has to step down from its pedestal.</p>
+          <p>A diploma is a moment of transition, of solstice, of transgression — of stepping beyond the walls of the academy and confronting the reality outside. Young artists appear in a world that is already old. They inherit existing political crises, the climate catastrophe and economic uncertainty. This is the generation of the pandemic and of digital natives, which learned to function in permanent crisis before it had properly entered adulthood. They question the belief in unchanging truths: hierarchies, linear progress, the permanence of institutions, the autonomy of art, the universality of prevailing social models. In the shadow of an ageing sun they look for new languages — rooted in personal experience, alternative narratives, mythologies of their own and signs that make it possible to describe a complicated reality.</p>
+          <p>Curated by Michalina Sablik, this exhibition of graduates of the Academy of Fine Arts in Kraków, organised as part of Open Eyes Art Festival 2026 and shown at the Palace of Art in Kraków, presents 14 selected diplomas from the past year to a wide audience. The artists represent different disciplines — from painting, sculpture and printmaking to design — though they often cross the boundaries of their own medium. These fourteen distinctive artistic positions do not add up to a single story about a generation. On the contrary — they show the dispersion of its languages and points of view. What they have in common is the need to look for new ways of describing a world in which old certainties are losing their force.</p>
+        </div>
+        <div class="exhibition-detail-credits">
+          <p><strong>Dates:</strong> 6 – 30 November 2026</p>
+          <p><strong>Opening:</strong> 6 November 2026, 4:00 PM</p>
+          <p><strong>Curator:</strong> Michalina Sablik</p>
+          <p><strong>Artists:</strong> {artists.join(', ')}</p>
+          <p><strong>Venue:</strong> Towarzystwo Przyjaciół Sztuk Pięknych — Pałac Sztuki, pl. Szczepański 4, 31-011 Kraków</p>
+          <p><strong>Part of:</strong> Open Eyes Art Festival 2026</p>
+          <p><strong>Opening hours:</strong> Tuesday – Sunday, 10:00 – 18:00. Closed on Mondays.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .ex-layout { display: grid; grid-template-columns: minmax(0, 760px); justify-content: start; gap: 2.5rem; align-items: start; }
+  </style>
+</Base>
