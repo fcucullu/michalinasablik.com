@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-label="Słońce się zestarzało / The Sun Has Grown Old — Pałac Sztuki, Kraków">
+  <rect width="1000" height="1000" fill="#111111"/>
+  <circle cx="500" cy="430" r="200" fill="none" stroke="#7a7a7a" stroke-width="2"/>
+  <circle cx="500" cy="430" r="150" fill="#1b1b1b"/>
+  <g fill="#f2f2f2" font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="500" y="412" font-size="54">Słońce się</text>
+    <text x="500" y="478" font-size="54">zestarzało</text>
+  </g>
+  <g fill="#9a9a9a" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" letter-spacing="3">
+    <text x="500" y="700" font-size="28">THE SUN HAS GROWN OLD</text>
+    <text x="500" y="758" font-size="22">PAŁAC SZTUKI, KRAKÓW</text>
+    <text x="500" y="800" font-size="22">OPEN EYES ART FESTIVAL 2026</text>
+    <text x="500" y="858" font-size="22">6–30 XI 2026</text>
+  </g>
+</svg>
