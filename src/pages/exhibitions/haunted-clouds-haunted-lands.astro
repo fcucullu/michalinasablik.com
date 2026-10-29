@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 
 const photos = [1];
 const alts: Record<number, string> = {
-  1: 'Still from "Rite, Raid, Ride", screened at Haunted Clouds, Haunted Lands',
+  1: 'Still from "Rite, Raid, Ride" by Oksana Pawełko & Weronika Wysocka, screened at Haunted Clouds, Haunted Lands',
 };
 const artists = [
   'Mourae Lois Búa', 'Eliza Chojnacka', 'Dorota Gawęda & Eglė Kulbokaitė',
@@ -28,7 +28,7 @@ const artists = [
         <div class="exhibition-detail-credits">
           <p><strong>Date:</strong> 19 November 2026, 7:00 PM</p>
           <p><strong>Curator:</strong> Michalina Sablik</p>
-          <p><strong>Coordination:</strong> Joan Palle</p>
+          <p><strong>Coordination:</strong> Joan Pallé</p>
           <p><strong>Artists:</strong> {artists.join(', ')}</p>
           <p><strong>Venue:</strong> Malpais, Barcelona</p>
           <p><strong>Part of:</strong> <a href="https://loop-barcelona.com/city-screen/" target="_blank" rel="noopener">Loop City Screen 2026</a></p>
@@ -47,7 +47,7 @@ const artists = [
   <div id="lightbox" onclick="if(event.target===this)closeLightbox()">
     <button class="lb-close" onclick="closeLightbox()">&times;</button>
     <button class="lb-prev" onclick="navLightbox(-1)">&#8249;</button>
-    <img id="lb-img" src="" alt='Still from "Rite, Raid, Ride", screened at Haunted Clouds, Haunted Lands' />
+    <img id="lb-img" src="" alt='Still from "Rite, Raid, Ride" by Oksana Pawełko & Weronika Wysocka, screened at Haunted Clouds, Haunted Lands' />
     <button class="lb-next" onclick="navLightbox(1)">&#8250;</button>
   </div>
 
